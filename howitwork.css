@@ -37,6 +37,7 @@ body {
     font-size: 20px;
     font-weight: 600;
     color: black;
+    cursor: pointer;
 }
 
 
@@ -63,7 +64,7 @@ body {
 }
 
 .nav-link a:hover {
-    color: #C2A2E0;
+    color: gray;
 }
 
 /* Help Dropdown */
@@ -99,7 +100,7 @@ body {
 }
 
 .off-log {
-    background-color: black;
+    background-color: darkgray;
     color: white;
     font-weight: 500;
     padding: 8px 15px;
@@ -109,7 +110,7 @@ body {
 }
 
 .off-log:hover {
-    background-color: #C2A2E0;
+    background-color: grey;
 }
 
 .container-fluid {
