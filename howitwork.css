@@ -1,0 +1,179 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    background: url('images/petition4.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Navbar Styling */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    padding: 15px 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo & Brand (Left Side) */
+.logo-contain {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+
+
+.nav-link {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+/* Navbar Links */
+.nav-link li {
+    position: relative;
+}
+
+.nav-link a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    padding: 8px 15px;
+    display: block;
+}
+
+.nav-link a:hover {
+    color: #C2A2E0;
+}
+
+/* Help Dropdown */
+.dropdown-item {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    top: 100%;
+    left: 0;
+    padding: 5px 0;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.dropdown-item li {
+    display: block;
+}
+
+.dropdown-item a {
+    padding: 8px 15px;
+    display: block;
+    color: black;
+}
+
+.dropdown-item a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-item {
+    display: block;
+}
+
+.off-log {
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.off-log:hover {
+    background-color: #C2A2E0;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Instructions Section */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.mainpart h4 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Instructions Content */
+#content {
+    font-size: 16px;
+    color: #333;
+    padding: 20px;
+}
+
+/* Ordered List (Main Steps) */
+#content ol {
+    padding-left: 20px;
+    counter-reset: section;
+}
+
+#content ol li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 30px;
+    color: black;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: 500;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
