@@ -1,15 +1,31 @@
+require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
+const User = require("./models/userModel.js");
+const authRoutes = require("./routes/authRoutes");
 const app = express();
 
+app.use(cors());
+app.use(express.json());
+
+app.use("/api/auth", authRoutes);
+
 app.get("/", (req, res) => {
-  res.send("Hello World from backend API Server Updated good to go.");
+  res.send("Hello World from backend API Server.");
 });
 
+// app.post("/api/users", async (req, res) => {
+//   try {
+//     const user = await User.create(req.body);
+//     res.status(200).json(user);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+
 mongoose
-  .connect(
-    "mongodb+srv://deepalakshmi2378:TechnovateGurls%4031@backenddb.vkpdiod.mongodb.net/Backend-API?retryWrites=true&w=majority&appName=BackendDB"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to Database!");
     app.listen(3000, () => {
