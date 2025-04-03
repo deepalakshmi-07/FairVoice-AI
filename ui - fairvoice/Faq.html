@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequently Asked Questions</title>
+    <link rel="stylesheet" href="Faq.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Frequently Asked Questions (FAQ)</h1>
+
+      <div class="faq">
+        <button class="accordion">
+          Q1. What is this Petition Analysis and Grievance Tracking System?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            It’s an online platform designed to allow users to file petitions or grievances, track their progress in real time, and receive updates about resolutions. The system analyzes submissions and routes them to the appropriate department for prompt action.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q2. How do I register and log in?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            You can register using your email address or phone number. Once registered, log in using your credentials. Registration helps keep your petition details secure and allows you to track the progress of your case.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q3. How do I submit a petition or grievance?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            After logging in, navigate to the “Submit Petition” section. Fill out the required fields—such as category, description, location, and any supporting documents—and submit your form. The system will generate a unique case ID for tracking purposes.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q4. How is my petition analyzed?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            Once submitted, your petition is automatically routed to the relevant department based on its category. The system uses built-in criteria to prioritize cases, ensuring urgent matters are flagged and addressed promptly.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q5. How can I track the status of my petition?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis
+            saepe molestiae distinctio asperiores cupiditate consequuntur dolor
+            ullam, iure eligendi harum eaque hic corporis debitis porro
+            consectetur voluptate rem officiis architecto.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q6. What information do I need to provide when filing a petition?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            Be sure to include all necessary details such as your contact information, a clear description of the issue, relevant documentation (if available), and the category under which your grievance falls. Detailed information helps the system process your case faster.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q7. Is my personal information secure?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            Yes, we use industry-standard security protocols to protect your data. Access to your personal information is strictly controlled and only used for processing your petition and communication about its status.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q8. Who has access to my petition information?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            Your petition details are visible only to authorized personnel within the relevant department. Additionally, you can always access your own submission and status updates through your secure account.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q9. What should I do if I do not receive an update?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            If you haven’t received any updates within the specified time frame, check your “My Petitions” dashboard first. If the status remains unchanged, contact our support team via the “Contact Us” section for further assistance.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Q10. How can I get help if I encounter an issue or have further questions?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="pannel">
+          <p>
+            You can reach out to our support team through the “Help” section on the website or via our dedicated support email/phone line. Our team is available to assist with any questions or issues you might have.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          this.parentElement.classList.toggle("active");
+
+          var pannel = this.nextElementSibling;
+
+          if (pannel.style.display === "block") {
+            pannel.style.display = "none";
+          } else {
+            pannel.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

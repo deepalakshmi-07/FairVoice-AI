@@ -1,0 +1,97 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    background: url('images/petition4.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+/* Navbar Styling */
+.nav-bar {
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-weight: 600;
+  }
+
+/* Logo & Brand (Left Side) */
+.logo-contain {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 700;
+    color: #6C4BF4;
+}
+
+/* Instructions Section */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.mainpart h1 {
+    margin: 1.5rem 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* Instructions Content */
+#content {
+    font-size: 16px;
+    color: #333;
+    padding: 20px;
+}
+
+/* Ordered List (Main Steps) */
+#content ol {
+    padding-left: 20px;
+    counter-reset: section;
+}
+
+#content ol li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 30px;
+    color: black;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: 500;
+    font-weight: bold;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubmitPetition</title>
+    <link rel="stylesheet" href="subpetition.css" />
+</head>
+<body>
+    <div class="header">
+        <nav class="navbar">
+            <div class="logo">FairVoice</div>
+            <ul class="nav-links">
+                <li><a href="petitioner.html">Home</a></li>
+                <li><a href="subpetition.html">Submit Petition</a></li>
+                <li class="dropdown">
+                    <a href="#">My Petition</a>
+                    <ul class="dropdown-item">
+                        <li><a href="#">View</a></li>
+                        <li><a href="#">Track</a></li>
+                        <li><a href="#">Appeal</a></li>
+                    </ul>
+                </li>
+                <li><a href="how.html">How It Works</a></li>
+                <li class="dropdown">
+                    <a href="#">Help</a>
+                    <ul class="dropdown-item">
+                        <li><a href="Faq.html">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Profile</a>
+                    <ul class="dropdown-item">
+                        <li><a href="#">Update</a></li>
+                        <li><a href="Main_home.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h2 class="title">Submit Petition</h2>
+            <form action="#">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Full Name</span>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone Number</span>
+                        <input type="tel" placeholder="Enter your mobile number" maxlength="10" pattern="[0-9]{10}" required>
+                    </div>                
+                    <div class="input-box">
+                        <span class="details">Petition Location</span>
+                        <input type="text" placeholder="Enter your location" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Petition Title</span>
+                        <input type="text" placeholder="Enter your title" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Petition Detail</span>
+                        <textarea id="petitionDetail" placeholder="Max 100 words" required></textarea>
+                        <small id="wordCount">Max 100 words</small>
+                    </div>                
+                    <div class="input-box">
+                        <span class="details">Photo</span>
+                        <input type="file" accept="image/*" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Submit Petition">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

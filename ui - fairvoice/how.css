@@ -1,0 +1,100 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: url('https://source.unsplash.com/1600x900/?technology,abstract') no-repeat center center/cover;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+.nav-bar {
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-weight: 600;
+  }
+  /* Logo & Brand (Left Side) */
+  .logo-contain {
+      display: flex;
+      align-items: center;
+  }
+  
+  .logo {
+      width: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+  }
+  
+  .brand {
+    font-size: 20px;
+    font-weight: 700;
+    color: #6C4BF4;
+  }
+  
+
+
+  
+
+/* How It Works Steps */
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.step:hover {
+    transform: scale(1.05);
+    background: #f0f0f0;
+}
+
+.step img {
+    width: 80px;
+    margin-right: 20px;
+}
+
+.step-content {
+    text-align: left;
+}
+
+.step h2 {
+    font-size: 24px;
+    color: #6C4BF4;
+}
+
+.step p {
+    font-size: 16px;
+    color: #555;
+}
+
+
