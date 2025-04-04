@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+/* Navbar */
+.navbar {
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+    background: #ffffff;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #6c4bf4;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav-links li {
+    position: relative;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    color: #6c4bf4;
+  }
+  
+  /* 🔹 DROPDOWN FIXES */
+  .nav-links li ul {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 5px;
+    list-style: none;
+    z-index: 999;
+    min-width: 160px;
+  }
+  
+  .nav-links li ul li {
+    padding: 8px 15px;
+  }
+  
+  .nav-links li ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-links li ul li a:hover {
+    background-color: #f4f4f4;
+    color: #6c4bf4;
+  }
+  .header{
+    background-color: #f4f4f4;
+  }
+  
+  /* Show dropdown on hover */
+  .nav-links li:hover > ul {
+    display: block;
+  }
+  
+  .track-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+  }
+  
+  .track-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+  }
+  
+  .track-box h2 {
+    color: #333;
+  }
+  
+  /* Input and Button */
+  .track-box input {
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    width: 80%;
+    margin-bottom: 15px;
+    outline: none;
+  }
+  
+  .track-box button {
+    padding: 10px 20px;
+    background: #5a67d8;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .track-box button:hover {
+    background: #434190;
+  }
+  
+  /* Vertical Progress Bar */
+  /* Remove the old vertical line from container */
+  /* Vertical Progress Bar */
+  .progress-container {
+    position: relative;
+    padding: 20px 0;
+  }
+  
+  /* Step Box */
+  .step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  /* Connecting line between steps */
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 10px; /* Center of the circle (20px/2) */
+    top: 20px; /* Bottom of the circle */
+    width: 2px;
+    height: 40px;
+    background:#ffffff;
+    z-index: 0;
+  }
+  
+  /* Circle Styling */
+  .circle {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Active Circle */
+  .step.active .circle {
+    background: #5a67d8;
+  }
+  
+  /* Active Line */
+  .step.active:not(:last-child)::after {
+    background: #5a67d8;
+  }
+  
+  /* Step Text */
+  .text {
+    margin-left: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .step.active .text {
+    color: #5a67d8;
+  }
+  

@@ -8,39 +8,25 @@ body {
     padding: 0;
     background-color: #f8f8f8;
 }
-
-/* Navbar Styling */
-.nav-bar {
-  padding: 2rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  font-weight: 600;
-}
-/* Logo & Brand (Left Side) */
-.logo-contain {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    width: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.brand {
+.header {
+  width: 100%;
+  background-color: white;
+  padding: 2rem 3rem;
   font-size: 20px;
   font-weight: 700;
   color: #6C4BF4;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
 }
 
+
+/* Navbar Styling */
 
 /* FAQ Styling */
 .wrapper {
   max-width: 65%;
   margin: auto;
+  font-size: 0.7rem;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -48,10 +34,12 @@ body {
 .wrapper > h1 {
   margin: 1.5rem 0;
   text-align: center;
+  font-size: 2.1rem;
   font-family: 'Poppins', sans-serif;
 }
 
 .wrapper > h1 {
+  color: #6C4BF4;
   letter-spacing: 2px;
 }
 
@@ -83,32 +71,33 @@ body {
 
 .active,
 .accordion:hover {
-  background-color: #cdcdcd;
+  background-color: #f3f3f3;
 }
 
 .pannel {
   padding: 0 2rem 2.5rem 2rem;
   background-color: white;
   overflow: hidden;
-  background-color: #f1f1f1f1;
   display: none;
   font-family: 'Poppins', sans-serif;
+  background-color: #fdfdfd; /* light inner white */
+
 }
 
 .pannel p {
   color: rgba(0, 0, 0, 0.7);
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.4;
   font-family: 'Poppins', sans-serif;
 }
 
 .faq {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  margin: 10px 0;
-  font-family: 'Poppins', sans-serif;
+  border-radius: 8px;
+  margin: 15px 0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  overflow: hidden;
 }
-
 .faq.active {
   border: none;
 }

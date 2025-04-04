@@ -17,42 +17,26 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
+    min-height: 200vh;
+    padding: 10px;
     text-align: center;
 }
-.nav-bar {
-    padding: 2rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    font-weight: 600;
-  }
-  /* Logo & Brand (Left Side) */
-  .logo-contain {
-      display: flex;
-      align-items: center;
-  }
-  
-  .logo {
-      width: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-  }
-  
-  .brand {
+.header {
+    width: 100%;
+    background-color: white;
+    padding: 2rem 3rem;
     font-size: 20px;
     font-weight: 700;
     color: #6C4BF4;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
   }
-  
 
 
 /* How It Works Steps */
 .container {
     max-width: 900px;
-    margin: 50px auto;
+    margin: 0px auto;
     padding: 30px;
     text-align: center;
     background: rgba(255, 255, 255, 0.85);

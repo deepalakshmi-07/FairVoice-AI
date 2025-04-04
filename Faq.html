@@ -15,6 +15,8 @@
     />
   </head>
   <body>
+    <div class="header">FairVoice</div>
+
     <div class="wrapper">
       <h1>Frequently Asked Questions (FAQ)</h1>
 
@@ -143,23 +145,26 @@
     </div>
 
     <script>
-      var acc = document.getElementsByClassName("accordion");
-      var i;
-
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          this.parentElement.classList.toggle("active");
-
-          var pannel = this.nextElementSibling;
-
-          if (pannel.style.display === "block") {
-            pannel.style.display = "none";
-          } else {
-            pannel.style.display = "block";
-          }
+      const accordions = document.querySelectorAll(".accordion");
+      
+      accordions.forEach((accordion, index) => {
+        accordion.addEventListener("click", () => {
+          const panel = accordion.nextElementSibling;
+          const parent = accordion.parentElement;
+    
+          // Close all others
+          document.querySelectorAll(".faq").forEach((faq, i) => {
+            if (i !== index) {
+              faq.querySelector(".accordion").classList.remove("active");
+              faq.querySelector(".pannel").style.display = "none";
+            }
+          });
+    
+          // Toggle current
+          accordion.classList.toggle("active");
+          panel.style.display = panel.style.display === "block" ? "none" : "block";
         });
-      }
+      });
     </script>
   </body>
 </html>

@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f2f2f2;
+}
+.header-banner img {
+  width: 100%;
+  max-height: 350px; /* Adjust height if needed */
+  object-fit: cover; /* Ensure it looks good */
+  border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+/* 🔹 NAVBAR FIXES */
+.header {
+  max-width: 1200px;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+/* Logo */
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #6c4bf4;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  padding: 10px 15px;
+  display: block;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #6c4bf4;
+}
+
+/* 🔹 DROPDOWN FIXES */
+.nav-links li ul {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 5px;
+  list-style: none;
+  z-index: 999;
+  min-width: 160px;
+}
+
+.nav-links li ul li {
+  padding: 8px 15px;
+}
+
+.nav-links li ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+.nav-links li ul li a:hover {
+  background-color: #f4f4f4;
+  color: #6c4bf4;
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover > ul {
+  display: block;
+}
+
+/* 🔹 PAGE CONTAINER */
+.container {
+  padding: 40px 5%;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  font-size: 28px;
+  color: #6c4bf4;
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 40px;
+  color: black;
+}
+
+/* 🔹 SEARCH BAR */
+.search-bar {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+
+.search-bar input:focus {
+  border-color: #6c4bf4;
+}
+
+/* 🔹 TABLE STYLES */
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #003366;
+  color: white;
+}
+
+th,
+td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 🔹 STATUS BADGES */
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.status.approved {
+  background-color: #ffc107; /* Yellow */
+}
+
+.status.rejected {
+  background-color: #dc3545; /* Red */
+}
+
+.status.completed {
+  background-color: #28a745; /* Green */
+}
+
+.status.in-progress {
+  background-color: #17a2b8; /* Blue */
+}

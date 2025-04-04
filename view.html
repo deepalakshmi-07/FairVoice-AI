@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Petitions</title>
+    <link rel="stylesheet" href="view.css" />
+  </head>
+  <body>
+    <div class="header">
+      <nav class="navbar">
+        <div class="logo">FairVoice</div>
+        <ul class="nav-links">
+          <li><a href="petitioner.html">Home</a></li>
+          <li><a href="subpetition.html">Submit Petition</a></li>
+          <li class="dropdown">
+            <a href="#">My Petition</a>
+            <ul class="dropdown-item">
+              <li><a href="view.html">View</a></li>
+              <li><a href="Track.html">Track</a></li>
+              <li><a href="Appeal.html">Appeal</a></li>
+            </ul>
+          </li>
+          <li><a href="Howitwork.html">How It Works</a></li>
+          <li class="dropdown">
+            <a href="#">Help</a>
+            <ul class="dropdown-item">
+              <li><a href="Faq.html">FAQ</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Profile</a>
+            <ul class="dropdown-item">
+              <li><a href="#">Update</a></li>
+              <li><a href="Main_home.html">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="container">
+        <h2 class="title">View Submitted Petitions</h2>
+
+        <p class="subtitle">Check your submitted petitions and their status</p>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by title or Grievance ID..."
+            onkeyup="searchPetitions()"
+          />
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Petition No</th>
+                <th>Title</th>
+                <th>Submission Date</th>
+                <th>Status</th>
+                <th>Grievance ID</th>
+              </tr>
+            </thead>
+            <tbody id="petitionTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <script src="view.js"></script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit an Appeal</title>
+    <link rel="stylesheet" href="Appeal.css" />
+  </head>
+  <body>
+    <div class="header">
+      <nav class="navbar">
+        <div class="logo">FairVoice</div>
+        <ul class="nav-links">
+          <li><a href="petitioner.html">Home</a></li>
+          <li><a href="subpetition.html">Submit Petition</a></li>
+          <li class="dropdown">
+            <a href="#">My Petition</a>
+            <ul class="dropdown-item">
+              <li><a href="view.html">View</a></li>
+              <li><a href="Track.html">Track</a></li>
+              <li><a href="Appeal.html">Appeal</a></li>
+            </ul>
+          </li>
+          <li><a href="Howitwork.html">How It Works</a></li>
+          <li class="dropdown">
+            <a href="#">Help</a>
+            <ul class="dropdown-item">
+              <li><a href="Faq.html">FAQ</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Profile</a>
+            <ul class="dropdown-item">
+              <li><a href="#">Update</a></li>
+              <li><a href="Main_home.html">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="container">
+        <h2 class="title">Submit an Appeal</h2>
+        <p class="text-center text-muted">
+          Please provide the required details to submit your appeal.
+        </p>
+        <form action="#">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" placeholder="Enter your fullname" required />
+            </div>
+            <div class="input-box">
+              <span class="details">Contact Number</span>
+              <input
+                type="tel"
+                placeholder="Enter your mobile number"
+                maxlength="10"
+                pattern="[0-9]{10}"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Email Address</span>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Communication Address</span>
+              <input type="text" placeholder="Enter your address" required />
+            </div>
+            <div class="input-box">
+              <span class="details">Grievance ID</span>
+              <input type="text" placeholder="Enter Grievance ID" required />
+            </div>
+            <div class="input-box">
+              <span class="details">Date of Original Filing</span>
+              <input type="date" class="form-control" />
+            </div>
+            <div class="input-box">
+              <span class="details">Original Grievance Details</span>
+              <textarea
+                id="original_grievance"
+                placeholder="Max 250 words"
+                required
+              ></textarea>
+            </div>
+
+            <div class="input-box">
+              <span class="details">Reason for Appeal</span>
+              <textarea
+                id="reason_for_appeal"
+                placeholder="Max 250 words"
+                required
+              ></textarea>
+            </div>
+
+            <div class="input-box">
+              <span class="details">Supporting File</span>
+              <input type="file" accept="image/*" required />
+            </div>
+          </div>
+          <div class="button">
+            <input type="submit" value="Submit Petition" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="Appeal.js"></script>
+  </body>
+</html>

@@ -45,7 +45,7 @@ body {
 }
 
 nav {
-  padding: 2rem 1rem;
+  padding: 2rem 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,30 +53,74 @@ nav {
   font-weight: 600;
 }
 
-.nav__logo {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary-color);
+.nav-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #6C4BF4;
 }
 
-.nav__links {
+.nav-links {
   list-style: none;
   display: flex;
-  align-items: center;
-  gap: 3rem;
-  margin-left: auto;
-  padding-right: 25px;
+  gap: 30px;
+  position: relative;
 }
 
-.link a {
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
   text-decoration: none;
-  color: var(--text-light);
-  cursor: pointer;
-  transition: 0.3s;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  transition: color 0.3s ease-in-out;
+  padding: 10px 15px;
+  display: block;
 }
 
-.link a:hover {
-  color: var(--primary-color);
+.nav-links a:hover {
+  color: #6C4BF4;
+}
+
+/* Dropdown Menu Fix */
+.nav-links li ul {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 5px;
+  list-style: none;
+  z-index: 999;
+  min-width: 150px;
+}
+
+.nav-links li ul li {
+  padding: 8px 15px;
+  white-space: nowrap;
+}
+
+.nav-links li ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links li ul li a:hover {
+  background-color: #f4f4f4;
+  color: #6C4BF4;
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover > ul {
+  display: block;
 }
 
 .header {
