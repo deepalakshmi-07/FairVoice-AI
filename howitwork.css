@@ -1,128 +1,98 @@
+/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-:root {
-  --primary-color: #5c48ee;
-  --primary-color-dark: #0f1e6a;
-  --text-dark: #0f1e6a;
-  --text-light: #3b3a3a;
-  --white: #ffffff;
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.btn {
-  padding: 1rem 2rem;
-  outline: none;
-  border: none;
-  font-size: 1rem;
-  color: var(--white);
-  background-color: var(--primary-color);
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-family: "Poppins", sans-serif;
-}
-
-.btn:hover {
-  background-color: var(--primary-color-dark);
-  color: var(--white);
-}
-
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-nav {
-  padding: 2rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  font-weight: 600;
-}
-
-.nav__logo {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary-color);
-}
-
-.nav__links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  margin-left: auto;
-  padding-top: 30px;
-  padding-right: 25px;
-}
-
-.link a {
-  text-decoration: none;
-  color: var(--text-light);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.link a:hover {
-  color: var(--primary-color);
-}
-
-.mainpart {
-    padding: 2rem;
-    background-color: #ffffff; /* White background */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    max-width: 900px; /* Limiting the width */
-    margin: 2rem auto; /* Centered container */
-    font-size: 1rem;
-  }
-  
-  .mainpart h4 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--primary-color-dark);
+    background: url('https://source.unsplash.com/1600x900/?technology,abstract') no-repeat center center/cover;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
     text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  #content {
-    padding-left: 20px;
-  }
-  
-  ol {
-    list-style: decimal; /* Default numbered list */
-    padding-left: 20px;
-  }
-  
-  li.title {
-    font-size: 1.1rem;
+}
+.nav-bar {
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     font-weight: 600;
-    color: var(--primary-color-dark);
-    margin-top: 1.5rem;
+  }
+  /* Logo & Brand (Left Side) */
+  .logo-contain {
+      display: flex;
+      align-items: center;
   }
   
-  ul {
-    padding-top: 20px;
-    /*list-style: none; Removing the bullet points */
-    padding-left: 10px;
+  .logo {
+      width: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
   }
   
-  ul li {
-    margin-bottom: 1rem;
-    color: var(--text-light);
+  .brand {
+    font-size: 20px;
+    font-weight: 700;
+    color: #6C4BF4;
   }
   
+
+
+/* How It Works Steps */
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.step:hover {
+    transform: scale(1.05);
+    background: #f0f0f0;
+}
+
+.step img {
+    width: 80px;
+    margin-right: 20px;
+}
+
+.step-content {
+    text-align: left;
+}
+
+.step h2 {
+    font-size: 24px;
+    color: #6C4BF4;
+}
+
+.step p {
+    font-size: 16px;
+    color: #555;
+}
+
+
