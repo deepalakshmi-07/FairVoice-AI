@@ -1,180 +1,128 @@
-/* Import Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Global Styles */
+:root {
+  --primary-color: #5c48ee;
+  --primary-color-dark: #0f1e6a;
+  --text-dark: #0f1e6a;
+  --text-light: #3b3a3a;
+  --white: #ffffff;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-    background: url('images/petition4.jpg') no-repeat center center fixed;
-    background-size: cover;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Navbar Styling */
-.nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: whitesmoke;
-    padding: 15px 30px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* Logo & Brand (Left Side) */
-.logo-contain {
-    display: flex;
-    align-items: center;
+.btn {
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: "Poppins", sans-serif;
 }
 
-.logo {
-    width: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.brand {
-    font-size: 20px;
-    font-weight: 600;
-    color: black;
-    cursor: pointer;
+.btn:hover {
+  background-color: var(--primary-color-dark);
+  color: var(--white);
 }
 
 
-.nav-link {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-
-/* Navbar Links */
-.nav-link li {
-    position: relative;
-}
-
-.nav-link a {
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-    padding: 8px 15px;
-    display: block;
-}
-
-.nav-link a:hover {
-    color: gray;
-}
-
-/* Help Dropdown */
-.dropdown-item {
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 150px;
-    top: 100%;
-    left: 0;
-    padding: 5px 0;
-    border-radius: 5px;
-    z-index: 10;
-}
-
-.dropdown-item li {
-    display: block;
-}
-
-.dropdown-item a {
-    padding: 8px 15px;
-    display: block;
-    color: black;
-}
-
-.dropdown-item a:hover {
-    background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-item {
-    display: block;
-}
-
-.off-log {
-    background-color: darkgray;
-    color: white;
-    font-weight: 500;
-    padding: 8px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.off-log:hover {
-    background-color: grey;
-}
-
-.container-fluid {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-/* Instructions Section */
 .container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+nav {
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 600;
+}
 
+.nav__logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
 
-.mainpart h4 {
-    text-align: center;
-    font-size: 24px;
+.nav__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-left: auto;
+  padding-top: 30px;
+  padding-right: 25px;
+}
+
+.link a {
+  text-decoration: none;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.link a:hover {
+  color: var(--primary-color);
+}
+
+.mainpart {
+    padding: 2rem;
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    max-width: 900px; /* Limiting the width */
+    margin: 2rem auto; /* Centered container */
+    font-size: 1rem;
+  }
+  
+  .mainpart h4 {
+    font-size: 1.8rem;
     font-weight: 600;
-    color: black;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-/* Instructions Content */
-#content {
-    font-size: 16px;
-    color: #333;
-    padding: 20px;
-}
-
-/* Ordered List (Main Steps) */
-#content ol {
+    color: var(--primary-color-dark);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  #content {
     padding-left: 20px;
-    counter-reset: section;
-}
-
-#content ol li {
-    font-size: 18px;
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 30px;
-    color: black;
-}
-
-.title{
-    font-size: 20px;
-    font-weight: 500;
-    font-weight: bold;
-}
-
-
-
-
-
-
-
+  }
+  
+  ol {
+    list-style: decimal; /* Default numbered list */
+    padding-left: 20px;
+  }
+  
+  li.title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color-dark);
+    margin-top: 1.5rem;
+  }
+  
+  ul {
+    padding-top: 20px;
+    /*list-style: none; Removing the bullet points */
+    padding-left: 10px;
+  }
+  
+  ul li {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+  
