@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Official Dashboard - Completed petitions</title>
+    <link rel="stylesheet" href="complete.css" />
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+      <div class="logo">FairVoice</div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <nav>
+          <ul>
+            <li><a href="lowpetition.html"><span class="icon">📋</span><span class="label">All </span></a></li>
+            <li><a href="urgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
+            <li><a href="repeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
+            <li><a href="approv.html"><span class="icon">✅</span><span class="label">Approved</span></a></li>
+            <li><a href="complete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <h1>Completed Petitions:</h1>
+        <div class="petition-grid">
+          <div class="petition-box" onclick='openPetitionModal({
+            title: "Street Light Installation in Perambur",
+            name: "Deepa Shankar",
+            phone: "9967123456",
+            location: "Perambur, Chennai",
+            description: "Several streets in Perambur lack proper lighting, making it unsafe at night. We request installation of street lights.",
+            documents: [
+              { name: "Dark Zones Map.jpg", url: "files/dark-zones-map.jpg" }
+            ]
+          })'>
+            <h3>Street Light Installation in Perambur</h3>
+            <p>Help make our neighborhood safer with proper street lighting...</p>
+          </div>
+          <div class="petition-box" onclick='openPetitionModal({
+            title: "Build a Public Toilet near Washermanpet Market",
+            name: "Mohamed Iqbal",
+            phone: "9876543210",
+            location: "Washermanpet, Chennai",
+            description: "There is an urgent need for a hygienic public toilet near the market area to support vendors and visitors.",
+            documents: [
+              { name: "Toilet Proposal.docx", url: "files/toilet-proposal.docx" }
+            ]
+          })'>
+            <h3>Build a Public Toilet near Washermanpet Market</h3>
+            <p>Vendors and visitors struggle due to lack of sanitation facilities...</p>
+          </div>
+        </div>
+      
+
+
+        <div id="petitionModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Report Title</h2>
+        
+            <div class="action-buttons">
+              <button class="download-btn" onclick="downloadAsPDF()">
+                <span class="icon">📥</span> Download as PDF
+              </button>
+            </div>
+        
+            <table id="petitionTable"></table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- Script -->
+    <script src="complete.js"></script>
+  </body>
+</html>

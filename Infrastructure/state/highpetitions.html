@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Official Dashboard - petitions</title>
+  <link rel="stylesheet" href="highpetitions.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="logo">FairVoice</div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="highpetitions.html"><span class="icon">📋</span><span class="label">All </span></a></li>
+          <li><a href="highescalated.html"><span class="icon">⏫</span><span class="label">Escalated</span></a></li>
+          <li><a href="highurgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
+          <li><a href="highrepeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
+          <li><a href="highcomplete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+          <li><a href="stats.html"><span class="icon">📊</span><span class="label">Stats</span></a></li>
+          <li><a href="offmanage.html"><span class="icon">🏢</span><span class="label">Manage Official</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Welcome, Officer!</h1>
+      <p>Here are the active petitions submitted by citizens:</p>
+      <div class="petition-grid">
+        <div class="petition-box" onclick='openModal({
+          title: "Repair Damaged Roads in Ambattur",
+          name: "Ramesh Kumar",
+          phone: "9845012345",
+          location: "Ambattur, Chennai",
+          description: "The main roads in Ambattur are filled with potholes, causing accidents and traffic. Immediate repair is needed.",
+          documents: [
+            { name: "Road Damage Photos.pdf", url: "files/road-damage-photos.pdf" },
+            { name: "Resident Complaints.docx", url: "files/resident-complaints.docx" }
+          ]
+        })'>
+          <h3>Repair Damaged Roads in Ambattur</h3>
+          <p>Pothole-ridden roads are a daily risk for commuters. Action is needed...</p>
+        </div>
+        
+          
+        <div class="petition-box" onclick='openModal({
+          title: "Street Light Installation in Perambur",
+          name: "Deepa Shankar",
+          phone: "9967123456",
+          location: "Perambur, Chennai",
+          description: "Several streets in Perambur lack proper lighting, making it unsafe at night. We request installation of street lights.",
+          documents: [
+            { name: "Dark Zones Map.jpg", url: "files/dark-zones-map.jpg" }
+          ]
+        })'>
+          <h3>Street Light Installation in Perambur</h3>
+          <p>Help make our neighborhood safer with proper street lighting...</p>
+        </div>
+        
+          
+        <div class="petition-box" onclick='openModal({
+          title: "Build a Public Toilet near Washermanpet Market",
+          name: "Mohamed Iqbal",
+          phone: "9876543210",
+          location: "Washermanpet, Chennai",
+          description: "There is an urgent need for a hygienic public toilet near the market area to support vendors and visitors.",
+          documents: [
+            { name: "Toilet Proposal.docx", url: "files/toilet-proposal.docx" }
+          ]
+        })'>
+          <h3>Build a Public Toilet near Washermanpet Market</h3>
+          <p>Vendors and visitors struggle due to lack of sanitation facilities...</p>
+        </div>
+        
+          
+        <div class="petition-box" onclick='openModal({
+          title: "Widening of Narrow Streets in Tondiarpet",
+          name: "Lakshmi Narayan",
+          phone: "9003123456",
+          location: "Tondiarpet, Chennai",
+          description: "The inner streets are too narrow for vehicles to pass, leading to frequent traffic jams. Widening is essential.",
+          documents: [
+            { name: "Traffic Report.pdf", url: "files/traffic-report.pdf" }
+          ]
+        })'>
+          <h3>Widening of Narrow Streets in Tondiarpet</h3>
+          <p>Traffic congestion is a daily hassle due to narrow lanes. Please help...</p>
+        </div>
+        
+          
+        <div class="petition-box" onclick='openModal({
+          title: "Construction of Footpath in Royapuram",
+          name: "Jennifer Raj",
+          phone: "8123412345",
+          location: "Royapuram, Chennai",
+          description: "Pedestrians are forced to walk on the road due to lack of footpaths. A new footpath is urgently needed.",
+          documents: [
+            { name: "Area Photos.jpg", url: "files/area-photos.jpg" }
+          ]
+        })'>
+          <h3>Construction of Footpath in Royapuram</h3>
+          <p>Without footpaths, walking has become dangerous for school children and elders...</p>
+        </div>
+        
+          
+        <div class="petition-box" onclick='openModal({
+          title: "Drainage System Upgrade in Kodungaiyur",
+          name: "Sathya Prakash",
+          phone: "9056123456",
+          location: "Kodungaiyur, Chennai",
+          description: "Frequent drainage blockages are causing health issues and flooding. The system needs a complete upgrade.",
+          documents: [
+            { name: "Drainage Plan.pdf", url: "files/drainage-plan.pdf" },
+            { name: "Health Reports.docx", url: "files/health-reports.docx" }
+          ]
+        })'>
+          <h3>Drainage System Upgrade in Kodungaiyur</h3>
+          <p>Blocked drains are turning into a public health hazard. Time for action...</p>
+        </div>
+        
+          
+        <div class="petition-box" onclick='openModal({
+          title: "Need for Bus Shelter at Mint Junction",
+          name: "Arun Karthik",
+          phone: "9884076543",
+          location: "Mint, Chennai",
+          description: "There is no bus shelter at a busy stop in Mint, leaving passengers exposed to heat and rain.",
+          documents: [
+            { name: "Location Sketch.pdf", url: "files/location-sketch.pdf" }
+          ]
+        })'>
+          <h3>Need for Bus Shelter at Mint Junction</h3>
+          <p>Commuters deserve better facilities at one of the busiest spots in the area...</p>
+        </div>
+        
+          
+        <div class="petition-box" onclick='openModal({
+          title: "Resurface Inner Roads in Korukkupet",
+          name: "Vignesh R.",
+          phone: "9444412345",
+          location: "Korukkupet, Chennai",
+          description: "The inner roads have not been resurfaced in years and are now in poor condition. Requesting prompt repair.",
+          documents: [
+            { name: "Road Condition Report.pdf", url: "files/road-condition-report.pdf" }
+          ]
+        })'>
+          <h3>Resurface Inner Roads in Korukkupet</h3>
+          <p>Damaged surfaces are making commuting unsafe and uncomfortable for residents...</p>
+        </div>
+        
+          
+          
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+<div id="petitionModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Petition Title</h2>
+  
+      <div class="petition-details">
+        <p><strong>Full Name:</strong> <span id="modalName">-</span></p>
+        <p><strong>Phone Number:</strong> <span id="modalPhone">-</span></p>
+        <p><strong>Location:</strong> <span id="modalLocation">-</span></p>
+        <p><strong>Description:</strong></p>
+        <p id="modalDescription">-</p>
+  
+        <p><strong>Uploaded Documents:</strong></p>
+        <ul id="modalDocuments">
+          <!-- Files will be inserted here -->
+        </ul>
+      </div>
+    </div>
+</div>
+  
+
+  <!-- Script -->
+<script src="highpetition.js"></script>
+
+</body>
+</html>
