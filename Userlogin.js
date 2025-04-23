@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Store token for later use, if needed
       localStorage.setItem("token", response.data.token);
       // Redirect to user home page (replace "UserHome.html" with your actual home page)
-      window.location.href = "UserHome.html";
+      window.location.href = "petitioner.html";
     } catch (error) {
       console.error("Error verifying OTP:", error);
       alert(error.response?.data?.message || "Error verifying OTP");

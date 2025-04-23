@@ -4,12 +4,19 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/userModel.js");
 const authRoutes = require("./routes/authRoutes");
+const registerOfficial = require("./routes/register.js");
+const authOfficials = require("./routes/authOfficials.js");
+
+const petitionRoutes = require("./routes/petitionRoutes");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/petitions", petitionRoutes);
+app.use("/api/officials", registerOfficial);
+app.use("/api/authenticateOfficial", authOfficials);
 
 app.get("/", (req, res) => {
   res.send("Hello World from backend API Server.");
@@ -32,6 +39,6 @@ mongoose
       console.log("Server is running on port 3000");
     });
   })
-  .catch(() => {
-    console.log("Connection Failed!");
+  .catch((error) => {
+    console.log("Connection Failed!", error);
   });

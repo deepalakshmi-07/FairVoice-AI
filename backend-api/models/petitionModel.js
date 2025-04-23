@@ -1,28 +1,47 @@
 const mongoose = require("mongoose");
 
-const petitionSchema = new mongoose.Schema({
-  name: { type: String, required: true, trim: true }, // Name of the petitioner
-  phoneNumber: {
-    type: String,
-    required: true,
-    match: /^[6-9]\d{9}$/,
-  }, // Petitioner's phone number (not unique, in case of multiple petitions)
-  petitionLocation: { type: String, required: true }, // Location where the issue is raised
-  petitionTitle: { type: String, required: true, trim: true }, // Short title summarizing the petition
-  petitionDescription: { type: String, required: true }, // Detailed explanation of the grievance
-  attachments: [{ type: String }], // URLs of documents (if uploaded)
-  photo: { type: String, required: false }, // URL of the uploaded photo
-  geolocation: {
-    latitude: { type: Number, required: true },
-    longitude: { type: Number, required: true },
-  }, // Stores the petitioner's exact location
-  status: {
-    type: String,
-    enum: ["Submitted", "In Progress", "Resolved", "Rejected"],
-    default: "Submitted",
-  }, // Tracks petition progress
-  createdAt: { type: Date, default: Date.now }, // Petition submission timestamp
-});
+const petitionSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    name: { type: String, required: true },
+    phoneNumber: {
+      type: String,
+      required: true,
+      match: /^[0-9]{10}$/, // basic validation for Indian mobile numbers
+    },
+    district: { type: String, required: true },
+    taluk: { type: String, required: true },
+    subDistrict: { type: String, required: true },
+    petitionLocation: { type: String, required: true },
+    petitionTitle: { type: String, required: true },
+    petitionDescription: {
+      type: String,
+      required: true,
+      maxlength: 1000, // Roughly 100 words max
+    },
+    photo: { type: String }, // store file path or URL
+    geolocation: {
+      latitude: { type: Number },
+      longitude: { type: Number },
+    },
+    attachments: [{ type: String }], // array of file paths or URLs
+    status: {
+      type: String,
+      enum: ["Submitted", "In Progress", "Resolved", "Rejected"],
+      default: "Submitted",
+    },
+    grievanceId: {
+      type: String,
+      unique: true,
+      sparse: true, // allows some petitions to have null grievanceId
+    },
+  },
+  { timestamps: true } // auto adds createdAt and updatedAt
+);
 
 const Petition = mongoose.model("Petition", petitionSchema);
 module.exports = Petition;

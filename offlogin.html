@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Official Login</title>
+    <link rel="stylesheet" href="offlogin.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form id="login-form">
+          <label for="district">District</label>
+          <select id="district" required>
+            <option value="">Select District</option>
+            <option value="chennai">Chennai</option>
+            <option value="kanchipuram">Kanchipuram</option>
+            <option value="high-level">High-Level</option>
+          </select>
+
+          <label for="level">Level</label>
+          <select id="level" required>
+            <option value="">Select Level</option>
+          </select>
+
+          <label for="username">UserName</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+
+          <button type="button" id="submit" class="btn-info">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="offlogin.js"></script>
+  </body>
+</html>

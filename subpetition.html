@@ -1,79 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SubmitPetition</title>
     <link rel="stylesheet" href="subpetition.css" />
-</head>
-<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
     <div class="header">
-        <nav class="navbar">
-            <div class="logo">FairVoice</div>
-            <ul class="nav-links">
-                <li><a href="petitioner.html">Home</a></li>
-                <li><a href="subpetition.html">Submit Petition</a></li>
-                <li class="dropdown">
-                    <a href="#">My Petition</a>
-                    <ul class="dropdown-item">
-                        <li><a href="view.html">View</a></li>
-                        <li><a href="Track.html">Track</a></li>
-                        <li><a href="Appeal.html">Appeal</a></li>
-                    </ul>
-                </li>
-                <li><a href="Howitwork.html">How It Works</a></li>
-                <li class="dropdown">
-                    <a href="#">Help</a>
-                    <ul class="dropdown-item">
-                        <li><a href="Faq.html">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Profile</a>
-                    <ul class="dropdown-item">
-                        <li><a href="#">Update</a></li>
-                        <li><a href="Main_home.html">Logout</a></li>
-                    </ul>
-                </li>
+      <nav class="navbar">
+        <!-- nav content remains unchanged -->
+        <div class="logo">FairVoice</div>
+        <ul class="nav-links">
+          <li><a href="petitioner.html">Home</a></li>
+          <li><a href="subpetition.html">Submit Petition</a></li>
+          <li class="dropdown">
+            <a href="#">My Petition</a>
+            <ul class="dropdown-item">
+              <li><a href="view.html">View</a></li>
+              <li><a href="Track.html">Track</a></li>
+              <li><a href="Appeal.html">Appeal</a></li>
             </ul>
-        </nav>
-        <div class="container">
-            <h2 class="title">Submit Petition</h2>
-            <form action="#">
-                <div class="user-details">
-                    <div class="input-box">
-                        <span class="details">Full Name</span>
-                        <input type="text" placeholder="Enter your name" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Phone Number</span>
-                        <input type="tel" placeholder="Enter your mobile number" maxlength="10" pattern="[0-9]{10}" required>
-                    </div>                
-                    <div class="input-box">
-                        <span class="details">Petition Location</span>
-                        <input type="text" placeholder="Enter your location" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Petition Title</span>
-                        <input type="text" placeholder="Enter your title" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Petition Detail</span>
-                        <textarea id="petitionDetail" placeholder="Max 100 words" required></textarea>
-                        <small id="wordCount">Max 100 words</small>
-                    </div>                
-                    <div class="input-box">
-                        <span class="details">Photo</span>
-                        <input type="file" accept="image/*" required>
-                    </div>
-                </div>
-                <div class="button">
-                    <input type="submit" value="Submit Petition">
-                </div>
-            </form>
-        </div>
+          </li>
+          <li><a href="Howitwork.html">How It Works</a></li>
+          <li class="dropdown">
+            <a href="#">Help</a>
+            <ul class="dropdown-item">
+              <li><a href="Faq.html">FAQ</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Profile</a>
+            <ul class="dropdown-item">
+              <li><a href="#">Update</a></li>
+              <li><a href="Main_home.html">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="container">
+        <h2 class="title">Submit Petition</h2>
+
+        <!-- ✅ Add id to form -->
+        <form
+          id="petitionForm"
+          action="#"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <!-- ✅ Add id -->
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="Enter your mobile number"
+                maxlength="10"
+                pattern="[0-9]{10}"
+                required
+              />
+            </div>
+
+            <!-- ✅ District select already correct -->
+            <div class="input-box">
+              <span class="details">District</span>
+              <select
+                id="district"
+                name="district"
+                required
+                onchange="updateTaluks()"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                  font-size: 14px;
+                "
+              >
+                <option value="">Select a District</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kanchipuram">Kanchipuram</option>
+              </select>
+            </div>
+
+            <!-- ✅ Taluk select already correct -->
+            <div class="input-box">
+              <span class="details">Taluk</span>
+              <select
+                id="taluk"
+                name="taluk"
+                required
+                onchange="autoFillSubDistrict()"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                  font-size: 14px;
+                "
+              >
+                <option value="">Select a Taluk</option>
+              </select>
+            </div>
+
+            <!-- ✅ Sub-district input already correct -->
+            <div class="input-box">
+              <span class="details">Sub-District</span>
+              <input
+                type="text"
+                id="subDistrict"
+                name="subDistrict"
+                placeholder="Auto-filled based on taluk"
+                readonly
+                required
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                  font-size: 14px;
+                  background-color: #f5f5f5;
+                "
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Petition Location</span>
+              <input
+                type="text"
+                id="petitionLocation"
+                name="petitionLocation"
+                placeholder="Enter your location"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Petition Title</span>
+              <input
+                type="text"
+                id="petitionTitle"
+                name="petitionTitle"
+                placeholder="Enter your title"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Petition Description</span>
+              <textarea
+                id="petitionDetail"
+                name="petitionDescription"
+                placeholder="Max 100 words"
+                required
+              ></textarea>
+              <small id="wordCount">0/100 words</small>
+            </div>
+
+            <!-- ✅ Add id to file input for geolocation -->
+            <div class="input-box">
+              <span class="details">Photo with Geolocation</span>
+              <input type="file" id="photo" name="photo" accept="image/*" />
+            </div>
+
+            <!-- ✅ Add id to file input for documents -->
+            <div class="input-box">
+              <span class="details">Related Documents</span>
+              <input
+                type="file"
+                id="attachments"
+                name="attachments"
+                multiple
+                accept=".pdf, .jpg, .jpeg, .png, .doc, .docx, .xls, .xlsx, .txt"
+              />
+            </div>
+          </div>
+
+          <div class="button">
+            <input type="submit" value="Submit Petition" />
+          </div>
+        </form>
+      </div>
     </div>
-    
-</body>
+
+    <script src="subpetition.js"></script>
+  </body>
 </html>

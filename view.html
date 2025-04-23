@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Petitions</title>
     <link rel="stylesheet" href="view.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="header">
@@ -21,6 +22,7 @@
               <li><a href="Appeal.html">Appeal</a></li>
             </ul>
           </li>
+          <li><a href="how.html">How It Works</a></li>
           <li><a href="Howitwork.html">How It Works</a></li>
           <li class="dropdown">
             <a href="#">Help</a>
@@ -41,17 +43,7 @@
 
       <div class="container">
         <h2 class="title">View Submitted Petitions</h2>
-
         <p class="subtitle">Check your submitted petitions and their status</p>
-
-        <div class="search-bar">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search by title or Grievance ID..."
-            onkeyup="searchPetitions()"
-          />
-        </div>
 
         <div class="table-container">
           <table>

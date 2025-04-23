@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="offmail.css">
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="login-container">
+      <div class="login-box">
+        <h2>Official Login</h2>
+        <form id="login-form">
+          <!-- Phone Number Input -->
+          <label for="mail">Email address</label>
+          <input
+            type="email"
+            id="mail"
+            placeholder="Enter your email"
+            required
+          />
+          <div id="error-msg" class="error-message"></div>
+          <!-- Send OTP Button -->
+          <button type="button" id="submit" class="btn">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="offmail.js"></script>
+</body>
+</html>
