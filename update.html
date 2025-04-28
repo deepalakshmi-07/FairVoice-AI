@@ -1,116 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile Update</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="update.css" />
-</head>
-<body>
-  <div class="header">FairVoice</div>
-  <div class="container mt-2">
-    <h2 class="text-center mb-4"><b>Update Profile</b></h2>
-    <div class="card shadow p-2 mx-auto" style="max-width: 800px;">
-      <div class="d-flex justify-content-end mb-3">
-        <button id="editAllBtn" class="btn btn-primary px-4 py-2 fs-6">Edit</button>
-      </div>      
-      <form id="profileForm">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label class="form-label">Full Name</label>
-            <input type="text" id="fullName" class="form-control" disabled />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Phone Number</label>
-            <input type="tel" id="phoneNumber" class="form-control" disabled />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Email</label>
-            <input type="email" id="email" class="form-control" disabled />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Address</label>
-            <input type="text" id="address" class="form-control" disabled />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">District</label>
-            <select id="district" class="form-select" disabled required>
-              <option value="" disabled selected>Select District</option>
-              <option value="Ariyalur">Ariyalur</option>
-              <option value="Chengalpattu">Chengalpattu</option>
-              <option value="Chennai">Chennai</option>
-              <option value="Coimbatore">Coimbatore</option>
-              <option value="Cuddalore">Cuddalore</option>
-              <option value="Dharmapuri">Dharmapuri</option>
-              <option value="Dindigul">Dindigul</option>
-              <option value="Erode">Erode</option>
-              <option value="Kallakurichi">Kallakurichi</option>
-              <option value="Kancheepuram">Kancheepuram</option>
-              <option value="Karur">Karur</option>
-              <option value="Krishnagiri">Krishnagiri</option>
-              <option value="Madurai">Madurai</option>
-              <option value="Nagapattinam">Nagapattinam</option>
-              <option value="Namakkal">Namakkal</option>
-              <option value="Nilgiris">Nilgiris</option>
-              <option value="Perambalur">Perambalur</option>
-              <option value="Pudukkottai">Pudukkottai</option>
-              <option value="Ramanathapuram">Ramanathapuram</option>
-              <option value="Ranipet">Ranipet</option>
-              <option value="Salem">Salem</option>
-              <option value="Sivaganga">Sivaganga</option>
-              <option value="Tenkasi">Tenkasi</option>
-              <option value="Thanjavur">Thanjavur</option>
-              <option value="Theni">Theni</option>
-              <option value="Thoothukudi">Thoothukudi</option>
-              <option value="Tiruchirappalli">Tiruchirappalli</option>
-              <option value="Tirunelveli">Tirunelveli</option>
-              <option value="Tirupathur">Tirupathur</option>
-              <option value="Tiruppur">Tiruppur</option>
-              <option value="Tiruvallur">Tiruvallur</option>
-              <option value="Tiruvannamalai">Tiruvannamalai</option>
-              <option value="Tiruvarur">Tiruvarur</option>
-              <option value="Vellore">Vellore</option>
-              <option value="Viluppuram">Viluppuram</option>
-              <option value="Virudhunagar">Virudhunagar</option>
-            </select>
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Pincode</label>
-            <input type="text" id="pincode" class="form-control" placeholder="Pincode" disabled />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Aadhar Number</label>
-            <input type="text" id="aadhar" class="form-control" placeholder="XXXX-XXXX-XXXX" disabled />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Gender</label>
-            <select id="gender" class="form-select" disabled>
-              <option value="" disabled selected>Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Update</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="update.css" />
+  </head>
+  <body>
+    <div class="header">FairVoice</div>
+    <div class="container mt-2">
+      <h2 class="text-center mb-4"><b>Update Profile</b></h2>
+      <div class="card shadow p-2 mx-auto" style="max-width: 800px">
+        <div class="d-flex justify-content-end mb-3">
+          <button id="editAllBtn" class="btn btn-primary px-4 py-2 fs-6">
+            Edit
+          </button>
         </div>
+        <form id="profileForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Full Name</label>
+              <input type="text" id="fullName" class="form-control" disabled />
+            </div>
 
-        <div class="text-center mt-4">
-          <button type="submit" class="btn btn-primary me-2">Save Changes</button>
-          <button type="button" class="btn btn-outline-secondary" id="discardChanges">Discard Changes</button>
-        </div>
-      </form>
+            <div class="col-md-6">
+              <label class="form-label">Phone Number</label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                class="form-control"
+                disabled
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" disabled />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Address</label>
+              <input type="text" id="address" class="form-control" disabled />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">District</label>
+              <select id="district" class="form-select" disabled required>
+                <option value="" disabled selected>Select District</option>
+                <option value="Ariyalur">Ariyalur</option>
+                <option value="Chengalpattu">Chengalpattu</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Cuddalore">Cuddalore</option>
+                <option value="Dharmapuri">Dharmapuri</option>
+                <option value="Dindigul">Dindigul</option>
+                <option value="Erode">Erode</option>
+                <option value="Kallakurichi">Kallakurichi</option>
+                <option value="Kancheepuram">Kancheepuram</option>
+                <option value="Karur">Karur</option>
+                <option value="Krishnagiri">Krishnagiri</option>
+                <option value="Madurai">Madurai</option>
+                <option value="Nagapattinam">Nagapattinam</option>
+                <option value="Namakkal">Namakkal</option>
+                <option value="Nilgiris">Nilgiris</option>
+                <option value="Perambalur">Perambalur</option>
+                <option value="Pudukkottai">Pudukkottai</option>
+                <option value="Ramanathapuram">Ramanathapuram</option>
+                <option value="Ranipet">Ranipet</option>
+                <option value="Salem">Salem</option>
+                <option value="Sivaganga">Sivaganga</option>
+                <option value="Tenkasi">Tenkasi</option>
+                <option value="Thanjavur">Thanjavur</option>
+                <option value="Theni">Theni</option>
+                <option value="Thoothukudi">Thoothukudi</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Tirunelveli">Tirunelveli</option>
+                <option value="Tirupathur">Tirupathur</option>
+                <option value="Tiruppur">Tiruppur</option>
+                <option value="Tiruvallur">Tiruvallur</option>
+                <option value="Tiruvannamalai">Tiruvannamalai</option>
+                <option value="Tiruvarur">Tiruvarur</option>
+                <option value="Vellore">Vellore</option>
+                <option value="Viluppuram">Viluppuram</option>
+                <option value="Virudhunagar">Virudhunagar</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Pincode</label>
+              <input
+                type="text"
+                id="pincode"
+                class="form-control"
+                placeholder="Pincode"
+                disabled
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Aadhar Number</label>
+              <input
+                type="text"
+                id="aadhar"
+                class="form-control"
+                placeholder="XXXX-XXXX-XXXX"
+                disabled
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Gender</label>
+              <select id="gender" class="form-select" disabled>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary me-2">
+              Save Changes
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              id="discardChanges"
+            >
+              Discard Changes
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="update.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="update.js"></script>
+  </body>
 </html>
