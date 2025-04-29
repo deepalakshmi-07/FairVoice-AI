@@ -6,8 +6,9 @@ const User = require("./models/userModel.js");
 const authRoutes = require("./routes/authRoutes");
 const registerOfficial = require("./routes/register.js");
 const authOfficials = require("./routes/authOfficials.js");
-
 const petitionRoutes = require("./routes/petitionRoutes");
+const userRoutes = require("./routes/userRoutes");
+
 const app = express();
 
 app.use(cors());
@@ -17,6 +18,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/petitions", petitionRoutes);
 app.use("/api/officials", registerOfficial);
 app.use("/api/authenticateOfficial", authOfficials);
+app.use("/api/user", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World from backend API Server.");
