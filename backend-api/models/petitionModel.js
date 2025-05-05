@@ -39,6 +39,9 @@ const petitionSchema = new mongoose.Schema(
       unique: true,
       sparse: true, // allows some petitions to have null grievanceId
     },
+    // ← NEW AI fields
+    category: { type: String, default: "Uncategorized" },
+    urgency: { type: String, default: "Not Urgent" },
   },
   { timestamps: true } // auto adds createdAt and updatedAt
 );

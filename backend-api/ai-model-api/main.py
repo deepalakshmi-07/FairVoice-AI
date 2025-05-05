@@ -19,6 +19,8 @@ app.add_middleware(
 )
 
 # Include your routes
+# app.include_router(router, prefix="/api")
+
 app.include_router(router)
 
 @app.get("/")
@@ -28,17 +30,5 @@ def root():
 
 
 
-
-# from fastapi import FastAPI
-# from app.routes import router
-
-# app = FastAPI(title="AI Model API")
-
-# # Include your routes
-# app.include_router(router)
-
-# @app.get("/")
-# def root():
-#     return {"message": "AI Model API is running"}
 
 

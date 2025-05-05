@@ -5,6 +5,7 @@ const multer = require("multer");
 const path = require("path");
 const exifr = require("exifr"); // For EXIF GPS extraction
 const authMiddleware = require("../middleware/authMiddleware"); // <-- import your JWT middleware
+const axios = require("axios"); // <-- added for AI model calls
 
 // ------------------------------
 // 1. Configure Multer Storage
@@ -91,7 +92,38 @@ router.post(
       }
 
       // --------------------------
-      // 6. Create & Save Petition
+      // 6. Call AI Models
+      // --------------------------
+      // Call Categorization Model
+      let category = "Uncategorized";
+      try {
+        console.log("▶️ Calling categorization on:", petitionTitle);
+        const { data } = await axios.post(
+          "http://localhost:8000/predict-department",
+          { text: petitionTitle }
+        );
+        console.log("📥 categorization response:", data);
+        category = data.department;
+      } catch (err) {
+        console.error("Error calling categorization model:", err.message);
+      }
+
+      // Call Urgency Detection Model
+      let urgency = "Not Urgent";
+      try {
+        console.log("▶️ Calling urgency on:", petitionTitle);
+        const { data } = await axios.post(
+          "http://localhost:8000/predict-urgency",
+          { text: petitionTitle }
+        );
+        console.log("📥 urgency response:", data);
+        urgency = data.urgency;
+      } catch (err) {
+        console.error("Error calling urgency model:", err.message);
+      }
+
+      // --------------------------
+      // 7. Create & Save Petition
       // --------------------------
       const newPetition = new Petition({
         userId,
@@ -106,12 +138,14 @@ router.post(
         photo: photoPath,
         attachments: attachmentsPaths,
         ...(geolocation && { geolocation }),
+        category, // ← AI field
+        urgency, // ← AI field
       });
 
       const saved = await newPetition.save();
 
       // --------------------------
-      // 7. Respond with Success
+      // 8. Respond with Success
       // --------------------------
       return res.status(201).json({
         message: "Petition submitted successfully",
