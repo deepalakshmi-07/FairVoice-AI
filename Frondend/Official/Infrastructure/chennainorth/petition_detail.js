@@ -19,3 +19,12 @@ if (latitude && longitude) {
       View on Google Maps
     </a>`;
 }
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("collapsed");
+}
+
+function logout() {
+  // Add your logout logic here
+  alert("You have been logged out.");
+}
