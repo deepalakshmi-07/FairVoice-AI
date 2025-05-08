@@ -113,173 +113,37 @@ body {
   
   .petition-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     margin-top: 20px;
   }
   
   .petition-box {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+    display: block;
+    background-color: #fff;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-    transition: 0.3s;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: #000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   
   .petition-box:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
   }
   
   .petition-box h3 {
-    margin-top: 0;
-    color: #4b3aff;
+    color: #4b38f2;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 18px;
   }
   
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+  .petition-box p {
+    color: #333;
+    font-size: 15px;
   }
   
-  .modal-content {
-    background-color: white;
-    margin: 10% auto;
-    padding: 30px;
-    border: 1px solid #888;
-    width: 500px;
-    border-radius: 16px;
-    position: relative;
-  }
-  
-  .modal-content h2 {
-    margin-top: 0;
-  }
-  
-  .close {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .actions {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .actions button {
-    flex: 1;
-    padding: 10px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .approve {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .reject {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .forward {
-    background-color: #ff9800;
-    color: white;
-  }
-  /* Forward Petition Modal */
-.forward-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .forward-modal-content {
-    background-color: white;
-    margin: 20% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 400px; /* Make the forward modal smaller than the petition detail modal */
-    border-radius: 16px;
-    position: relative;
-  }
-  
-  .forward-modal-content h2 {
-    margin-top: 0;
-    color: #0c0b12;
-  }
-  
-  .forward-modal .close {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  /* Styling for the Forward Petition form */
-  .forward-modal form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .forward-modal form label {
-    font-weight: 500;
-    color: #080616;
-  }
-  
-  .forward-modal form select,
-  .forward-modal form textarea,
-  .forward-modal form input[type="file"] {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-  }
-  
-  .forward-modal form textarea {
-    height: 100px;
-    resize: vertical;
-  }
-  
-  .forward-modal form button {
-    background-color: #4b3aff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .forward-modal form button:hover {
-    background-color: #372dff;
-  }
   
