@@ -1,7 +1,157 @@
-body {
-    font-family: 'Poppins', sans-serif;
-  }
-  .card {
-    max-width: 600px;
-  }
-  
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #f9f9ff;
+      color: #222;
+    }
+
+    .header {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 600;
+      color: #4b3aff;
+    }
+
+    .logout-btn {
+      background-color: #4b3aff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .logout-btn:hover {
+      background-color: #372dff;
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #4b3aff;
+    }
+
+    .main-layout {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #ffffff;
+      box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.collapsed {
+      width: 60px;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-top: 20px;
+    }
+
+    .sidebar nav ul li {
+      margin: 20px 0;
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 15px;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      color: #4b3aff;
+      text-decoration: none;
+      font-weight: 500;
+      gap: 10px;
+    }
+
+    .sidebar .icon {
+      font-size: 22px;
+    }
+
+    .sidebar .label {
+      white-space: nowrap;
+    }
+
+    .form-wrapper {
+      flex-grow: 1;
+      padding: 40px 20px;
+    }
+
+    .card {
+      max-width: 500px;
+      background: #fff;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 5px;
+      display: block;
+      color: #333;
+    }
+
+    select,
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    select:focus,
+    textarea:focus,
+    input[type="file"]:focus {
+      border-color: #4f3cc9;
+      outline: none;
+    }
+
+    .btn-primary {
+      background-color: #4f3cc9;
+      border-color: #4f3cc9;
+      font-weight: 500;
+      border-radius: 8px;
+    }
+
+    .btn-primary:hover {
+      background-color: #3d2f99;
+      border-color: #3d2f99;
+    }
+
+    .btn-secondary {
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+
+    a.btn-secondary {
+      text-decoration: none;
+      font-weight: 500;
+    }

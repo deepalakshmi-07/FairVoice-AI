@@ -9,27 +9,54 @@
   <link rel="stylesheet" href="forward.css" />
 </head>
 <body>
-  <div class="container mt-4">
-    <h2 class="text-center">Forward Petition</h2>
-    <div class="card mx-auto mt-3 p-4 shadow">
-      <form id="forwardForm">
-        <div class="mb-3">
-          <label class="form-label">Forward To Department</label>
-          <input type="text" class="form-control" id="department" required />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Message</label>
-          <textarea class="form-control" id="message" rows="3" required></textarea>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Additional Notes</label>
-          <textarea class="form-control" id="notes" rows="2"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Forward</button>
-        <div class="text-center mt-3">
-          <a href="petition_detail.html" class="btn btn-secondary">← Back to Petition</a>
-        </div>
-      </form>
+  <header class="header">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="logo">FairVoice</div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="lowpetition.html"><span class="icon">📋</span><span class="label">All </span></a></li>
+          <li><a href="urgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
+          <li><a href="repeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
+          <li><a href="approv.html"><span class="icon">✅</span><span class="label">Approved</span></a></li>
+          <li><a href="complete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Form Section -->
+    <div class="form-wrapper">
+      <h2 class="text-center">Forward Petition</h2>
+      <div class="card mx-auto mt-3 p-4">
+        <form id="forwardForm">
+          <div class="mb-3">
+            <label for="department">Choose Department:</label>
+            <select id="department" required>
+              <option value="Socialwelfare">Social Welfare</option>
+              <option value="Health">Health</option>
+              <option value="Infrastructure">Infrastructure</option>
+              <option value="law and order">Law and Order</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="file">Attach File (Optional):</label>
+            <input type="file" id="file" />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Forward</button>
+          <div class="text-center mt-3">
+            <a href="petition_detail.html" class="btn btn-secondary">← Back to Petition</a>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <script src="forward.js"></script>

@@ -1,20 +1,72 @@
+/* petition_detail.css */
 
-  body {
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .card {
-    max-width: 700px;
-  }
-  
-  #petitionDetails p {
-    margin-bottom: 10px;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    padding: 5px;
-  }
-    
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-weight: 600;
+  color: #4f3cc9;
+  margin-bottom: 20px;
+}
+
+.card {
+  max-width: 600px;
+  background: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+h4 {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+strong {
+  color: #222;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 5px;
+}
+
+.btn {
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 20px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-primary {
+  background-color: #4f3cc9;
+  border-color: #4f3cc9;
+}
+
+.btn-primary:hover {
+  background-color: #3d2f99;
+  border-color: #3d2f99;
+}

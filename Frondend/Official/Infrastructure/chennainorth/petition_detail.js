@@ -1,19 +1,21 @@
-function getParam(key) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(key) || "Not Provided";
-  }
-  
-  document.getElementById("name").textContent = getParam("name");
-  document.getElementById("phone").textContent = getParam("phone");
-  document.getElementById("location").textContent = getParam("location");
-  document.getElementById("title").textContent = getParam("title");
-  document.getElementById("detail").textContent = getParam("detail");
-  
-  // Optional images (placeholder fallback)
-  document.getElementById("geoPhoto").src = getParam("geoPhoto") || "placeholder-geo.jpg";
-  document.getElementById("relatedPhoto").src = getParam("relatedPhoto") || "placeholder-related.jpg";
-  
-  function handleAction(action) {
-    alert("You clicked: " + action.charAt(0).toUpperCase() + action.slice(1));
-  }
-  
+// Example values (in real usage, you would get these from your petition data)
+const latitude = 28.6139;    // Replace with actual value
+const longitude = 77.2090;   // Replace with actual value
+
+// Fill in details
+document.getElementById('name').textContent = "John Doe";
+document.getElementById('phone').textContent = "9876543210";
+document.getElementById('location').textContent = "New Delhi";
+document.getElementById('title').textContent = "Fix streetlight";
+document.getElementById('detail').textContent = "The streetlight near my house is broken.";
+document.getElementById('geoPhoto').src = "geolocation.jpg";
+document.getElementById('relatedPhoto').src = "related.jpg";
+
+// Add Google Maps link
+if (latitude && longitude) {
+  const mapLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+  document.getElementById('geoMapLink').innerHTML = `
+    <a href="${mapLink}" target="_blank" class="btn btn-outline-primary btn-sm">
+      View on Google Maps
+    </a>`;
+}
