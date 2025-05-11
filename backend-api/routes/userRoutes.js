@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require("../models/userModel");
 const authenticateToken = require("../middleware/authMiddleware.js");
 
+// for update profile
 // GET /api/user/profile
 router.get("/profile", authenticateToken, async (req, res) => {
   try {

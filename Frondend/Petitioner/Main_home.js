@@ -8,6 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const officialLoginBtn = document.getElementById("officialLoginBtn");
 
   officialLoginBtn.addEventListener("click", function () {
-    window.location.href = "offmail.html";
+    window.location.href = "../Official/official-login.html";
   });
 });

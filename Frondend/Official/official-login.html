@@ -1,0 +1,47 @@
+<!-- official-login.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Official Login</title>
+    <link href="official-login.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-box">
+        <h2 class="login-title">Sign In</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <div id="errorMsg" class="error-message"></div>
+          <button type="submit" class="btn-login">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="official-login.js"></script>
+  </body>
+</html>

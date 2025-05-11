@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (aiStatus !== "approved") {
       // 🚀 use innerHTML so the <a> tag works
       msgBox.innerHTML = `
-        ❌ Petition rejected. 
+         Petition rejected. 
         Please go through the <a href="Howitwork.html" target="_blank" rel="noopener">
           instructions
         </a>.

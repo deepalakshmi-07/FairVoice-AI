@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Petition Stats - Stats</title>
+  <link rel="stylesheet" href="stats.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="logo">FairVoice</div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="highpetitions.html"><span class="icon">📋</span><span class="label">All </span></a></li>
+          <li><a href="highescalated.html"><span class="icon">⏫</span><span class="label">Escalated</span></a></li>
+          <li><a href="highurgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
+          <li><a href="highrepeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
+          <li><a href="highcomplete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+          <li><a href="stats.html"><span class="icon">📊</span><span class="label">Stats</span></a></li>
+          <li><a href="offmanage.html"><span class="icon">🏢</span><span class="label">Manage Official</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Petition Overview</h1>
+
+      <div class="stats-cards">
+        <div class="card total">Total: <span id="totalCount">0</span></div>
+        <div class="card resolved">Resolved: <span id="resolvedCount">0</span></div>
+        <div class="card pending">Pending: <span id="pendingCount">0</span></div>
+      </div>
+
+      <div class="charts">
+        <canvas id="statusBarChart"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <script src="stats.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Official Dashboard - Completed petitions</title>
+    <link rel="stylesheet" href="complete.css" />
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+      <div class="logo">FairVoice</div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <nav>
+            <ul>
+                <li><a href="offpetitions.html"><span class="icon">📋</span><span class="label">All </span></a></li>
+                <li><a href="urgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
+                <li><a href="repeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
+                <li><a href="approv.html"><span class="icon">✅</span><span class="label">Approved</span></a></li>
+                <li><a href="complete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+              </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <h1>Completed Petitions:</h1>
+        <div class="petition-container">
+          <div class="petition-card" onclick="openPetitionModal()">
+            <h3>Increase Teacher Salaries</h3>
+            <p>
+              Teachers deserve better compensation for their invaluable
+              contributions...
+            </p>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="petitionModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Report for Increase Teacher Salaries</h2>
+
+            <div class="action-buttons">
+              <button class="download-btn" onclick="downloadAsPDF()">
+                <span class="icon">📥</span> Download as PDF
+              </button>
+            </div>
+
+            <table id="petitionTable">
+              <tr>
+                <th>Full Name</th>
+                <td>Charlotte Evans</td>
+              </tr>
+              <tr>
+                <th>Phone Number</th>
+                <td>7689012345</td>
+              </tr>
+              <tr>
+                <th>Location</th>
+                <td>Dallas, TX</td>
+              </tr>
+              <tr>
+                <th>Description</th>
+                <td>
+                  Teachers play a vital role in shaping the future. It's time we
+                  increase their salaries to reflect their dedication.
+                </td>
+              </tr>
+              <tr>
+                <th>Uploaded Documents</th>
+                <td>
+                  <ul>
+                    <li><a href="#" download>Teacher Pay Survey.pdf</a></li>
+                    <li>
+                      <a href="#" download>Education Budget Breakdown.jpg</a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Script -->
+    <script src="complete.js"></script>
+  </body>
+</html>

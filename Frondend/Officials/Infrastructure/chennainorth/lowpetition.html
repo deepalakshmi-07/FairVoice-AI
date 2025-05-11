@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Official Dashboard - petitions</title>
+  <link rel="stylesheet" href="lowpetition.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="logo">FairVoice</div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="lowpetition.html"><span class="icon">📋</span><span class="label">All </span></a></li>
+          <li><a href="urgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
+          <li><a href="repeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
+          <li><a href="approv.html"><span class="icon">✅</span><span class="label">Approved</span></a></li>
+          <li><a href="complete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Welcome, Officer!</h1>
+      <p>Here are the active petitions submitted by citizens:</p>
+    
+      <div class="petition-grid">
+        <a class="petition-box" href="petition_detail.html">
+          <h3>Increase Teacher Salaries</h3>
+          <p>Teachers deserve better compensation for their invaluable contributions...</p>
+        </a>
+        <a class="petition-box" href="petition_detail.html">
+          <h3>Reduce Student Loan Debt</h3>
+          <p>It's time to ease the burden of student loan debt for young graduates...</p>
+        </a>
+        <!-- Add more petition-box items here -->
+      </div>
+    </main>
+    
+
+  
+  
+  
+
+  <!-- Script -->
+<script src="lowpetition.js"></script>
+
+</body>
+</html>

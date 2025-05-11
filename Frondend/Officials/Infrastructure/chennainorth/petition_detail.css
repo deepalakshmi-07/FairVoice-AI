@@ -1,0 +1,185 @@
+/* petition_detail.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+}
+
+.header {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4b3aff;
+}
+
+.logout-btn {
+  background-color: #4b3aff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #372dff;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  margin-right: 12px;
+  color: #4b3aff;
+}
+
+.main-layout {
+  display: flex;
+  height: calc(100vh - 60px); /* Adjust for header */
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #ffffff;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar nav ul li {
+  margin: 20px 0;
+  padding-left: 15px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  color: #4b3aff;
+  text-decoration: none;
+  font-weight: 500;
+  gap: 10px;
+}
+
+.sidebar .icon {
+  font-size: 22px;
+}
+
+.sidebar .label {
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar.collapsed .label {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background-color: #f5f4ff;
+}
+
+.card {
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+h2 {
+  font-weight: 600;
+  color: #4f3cc9;
+  margin-bottom: 20px;
+}
+
+.card {
+  max-width: 600px;
+  background: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+h4 {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+strong {
+  color: #222;
+}
+#geoMapLink a {
+  margin-top: 8px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.img-fluid_rounded {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 5px;
+}
+
+.btn {
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 20px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-primary {
+  background-color: #4f3cc9;
+  border-color: #4f3cc9;
+}
+
+.btn-primary:hover {
+  background-color: #3d2f99;
+  border-color: #3d2f99;
+}

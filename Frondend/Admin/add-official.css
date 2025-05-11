@@ -1,0 +1,40 @@
+/* add-official.css */
+/* Poppins Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-control,
+.form-select {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.btn-warning {
+  background-color: rgb(19, 74, 202);
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #95a2e4;
+}

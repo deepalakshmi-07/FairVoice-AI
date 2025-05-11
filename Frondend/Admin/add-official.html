@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Official</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="add-official.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center mt-4 text-white fw-bold">Add New Official</h2>
+      <div
+        class="card mx-auto mt-3 p-4 shadow"
+        style="max-width: 500px; background: rgba(255, 255, 255, 0.15)"
+      >
+        <h4 class="text-center mb-4 text-white">Official Registration</h4>
+        <form id="addOfficialForm">
+          <!-- Full Name -->
+          <div class="mb-3">
+            <label for="name" class="form-label text-white">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              placeholder="Enter full name"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label text-white">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter email address"
+              required
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label text-white">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter temporary password"
+              required
+            />
+          </div>
+
+          <!-- Phone -->
+          <div class="mb-3">
+            <label for="phone" class="form-label text-white"
+              >Phone Number</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-control"
+              placeholder="Enter 10-digit phone number"
+              required
+            />
+          </div>
+
+          <!-- Department -->
+          <div class="mb-3">
+            <label for="department" class="form-label text-white"
+              >Department</label
+            >
+            <select
+              id="department"
+              name="department"
+              class="form-select"
+              required
+            >
+              <option value="" disabled selected>Select Department</option>
+              <option value="health">Health</option>
+              <option value="law">Law &amp; Order</option>
+              <option value="infra">Infrastructure</option>
+              <option value="education">Education</option>
+              <option value="welfare">Social Welfare</option>
+            </select>
+          </div>
+
+          <!-- Role -->
+          <div class="mb-3">
+            <label for="role" class="form-label text-white">Role</label>
+            <select id="role" name="role" class="form-select" required>
+              <option value="" disabled selected>Select Role</option>
+              <option value="state">State</option>
+              <option value="district">District</option>
+              <option value="subdistrict">Sub-district</option>
+            </select>
+          </div>
+
+          <!-- Region (populated by JS) -->
+          <div class="mb-4">
+            <label for="region" class="form-label text-white">Region</label>
+            <select id="region" name="region" class="form-select" required>
+              <option value="" disabled selected>Select Region</option>
+            </select>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-warning w-100">
+            Register Official
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Custom JS -->
+    <script src="add-official.js"></script>
+  </body>
+</html>
