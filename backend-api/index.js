@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 const User = require("./models/userModel.js");
 const authRoutes = require("./routes/authRoutes");
 // const registerOfficial = require("./routes/register.js");
@@ -13,6 +14,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "../Frondend")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/petitions", petitionRoutes);

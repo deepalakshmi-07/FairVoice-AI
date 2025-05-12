@@ -1,0 +1,17 @@
+/* admin-dashboard.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* Highlight active nav link */
+.nav-link.active {
+  font-weight: 600;
+  color: #ff9800 !important;
+}
