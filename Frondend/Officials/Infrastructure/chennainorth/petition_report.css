@@ -61,44 +61,54 @@ body {
   overflow: hidden;
 }
 .header {
-  background-color: #fff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: #ffff;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  height: 60px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .logo {
   font-size: 20px;
-  font-weight: 600;
-  color: #4b3aff;
-}
-
-.logout-btn {
-  background-color: #4b3aff;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background-color: #372dff;
+  font-weight: bold;
+  color: #5a5aff;
 }
 
 .toggle-btn {
+  font-size: 24px;
   background: none;
   border: none;
-  font-size: 22px;
   cursor: pointer;
-  margin-right: 12px;
-  color: #4b3aff;
+  color: #333;
+}
+
+.department-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  font-size: 18px;
+  color: #5a5aff;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background-color: #5a5aff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .timeline-list {

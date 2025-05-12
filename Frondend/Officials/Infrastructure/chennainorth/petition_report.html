@@ -9,13 +9,14 @@
   <link rel="stylesheet" href="petition_report.css" />
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
+  <div class="left-section">
     <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
     <div class="logo">FairVoice</div>
-    <button class="logout-btn">Logout</button>
-  </header>
-
+  </div>
+  <div class="department-title">Education Department</div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
   <!-- Main Layout -->
   <div class="container-fluid d-flex">
     <!-- Sidebar -->
@@ -64,7 +65,7 @@
           <button class="btn btn-success me-2" onclick="approvePetition()">Approve</button>
           <button class="btn btn-danger me-2" onclick="rejectPetition()">Reject</button>
           <button class="btn btn-warning me-2" onclick="toggleForward()">Forward</button>
-          <button class="btn btn-danger me-2" onclick="activateEscalate()">Escalate</button>
+          <button class="btn btn-secondary me-2" onclick="activateEscalate()">Escalate</button>
           <button class="btn btn-primary" onclick="activateReport()">Report</button>
         </div>
 
@@ -84,12 +85,16 @@
 
         <!-- Status Dropdown -->
         <p class="d-flex align-items-center">
-          <strong class="me-2">Select Status:</strong>
+          <strong class="me-2">Additional Actions:</strong>
           <select class="form-select w-auto" id="statusSelect" onchange="handleStatusChange()">
             <option value="">-- Choose --</option>
             <option value="on-progress">On-progress</option>
-            <option value="report">Report</option>
-            <option value="escalate">Escalate</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Field Investigation">Field Investigation</option>
+            <option value="Pending Decision">Pending Decision</option>
+            <option value="Action Initiated">Action Initiated</option>
+            <option value="On Hold">On Hold</option>
+            <option value="Under Consultation">Under Consultation</option>
           </select>
         </p>
 
