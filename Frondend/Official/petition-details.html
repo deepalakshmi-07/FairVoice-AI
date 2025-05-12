@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Petition Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="petition-details.css" />
+</head>
+<body>
+  <header class="header">
+  <div class="left-section">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="logo">FairVoice</div>
+  </div>
+  <div class="department-title"><strong>Education Department</strong></div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
+  <!-- Main Layout -->
+  <div class="container-fluid d-flex">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="official-dashboard.html"><span class="icon">📋</span><span class="label">All</span></a></li>
+          <li><a href="urgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
+          <li><a href="repeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
+          <li><a href="approv.html"><span class="icon">✅</span><span class="label">Approved</span></a></li>
+          <li><a href="complete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <main class="content p-4 w-100">
+      <h2 class="text-center mb-4">Petition Report</h2>
+      <div class="card p-4 shadow">
+        <h4>User & Petition Info</h4><br>
+        <p><strong>Name:</strong> <span id="name">Amit Kumar</span></p>
+        <p><strong>Phone:</strong> <span id="phone">9876543210</span></p>
+        <p><strong>District:</strong> <span id="District">Delhi, India</span></p>
+        <p><strong>Petition Title:</strong> <span id="title">Repair the main road</span></p>
+        <p><strong>Petition Detail:</strong> <span id="detail">The road is severely damaged and unsafe.</span></p>
+        <p><strong>Submitted on:</strong> <span id="submittedDate">2025-04-15</span></p>
+        <p><strong>Deadline:</strong> <span id="deadline"></span></p>
+
+        
+        <div class="mb-3">
+          <p>
+            <strong>view on Map:</strong>
+            <span id="geoMapLink" class="ms-2"></span>
+          </p>
+          <strong>Geolocation Photo:</strong>
+          <img id="geoPhoto" src="phtot.jpg" alt="Geolocation Photo" class="img-fluid_rounded" />
+        </div>
+
+        <div class="mb-3">
+          <p>
+            <strong>Related Photo:</strong><img id="relatedPhoto" src="related_photo.jpg" alt="Related Photo" class="img-fluid_rounded" />
+          </p>
+        </div>
+
+        <!-- Primary Actions -->
+        <strong>Primary Actions:</strong><br>
+        <div class="d-flex mb-3">
+          <button class="btn btn-success me-2" onclick="approvePetition()">Approve</button>
+          <button class="btn btn-danger me-2" onclick="rejectPetition()">Reject</button>
+          <button class="btn btn-warning me-2" onclick="toggleForward()">Forward</button>
+          <button class="btn btn-secondary me-2" onclick="activateEscalate()">Escalate</button>
+          <button class="btn btn-primary" onclick="activateReport()">Report</button>
+        </div>
+
+        <!-- Forward Dropdown -->
+        <p class="d-flex align-items-center">
+          <div id="forwardDropdown" style="display: none;">
+          <label for="departmentSelect me-2"><strong> Department:</strong></label>
+          <select id="departmentSelect w-auto">
+            <option value="">--Select--</option>
+            <option value="Health">Health</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Social_welfare">Social welfare</option>
+            <option value="Law & order">Law & Order</option>
+          </select>
+          </div>
+        </p>
+
+        <!-- Status Dropdown -->
+        <p class="d-flex align-items-center">
+          <strong class="me-2">Additional Actions:</strong>
+          <select class="form-select w-auto" id="statusSelect" onchange="handleStatusChange()">
+            <option value="">-- Choose --</option>
+            <option value="on-progress">On-progress</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Field Investigation">Field Investigation</option>
+            <option value="Pending Decision">Pending Decision</option>
+            <option value="Action Initiated">Action Initiated</option>
+            <option value="On Hold">On Hold</option>
+            <option value="Under Consultation">Under Consultation</option>
+          </select>
+        </p>
+
+        <!-- Report Section -->
+        <div id="reportSection" class="d-none">
+          <div id="statusTimeline" class="timeline mt-3">
+            <h5>Status Timeline</h5>
+            <ul class="timeline-list" id="timelineList"></ul>
+          </div>
+
+          <div class="mb-3">
+            <label for="finalRemark" class="form-label">Final Remark:</label>
+            <textarea class="form-control" id="finalRemark" rows="3" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="closureDocs" class="form-label">Attach Closure Docs:</label>
+            <input type="file" id="closureDocs" class="form-control" />
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-success me-2" onclick="submitReport()">Submit</button>
+            <button class="btn btn-outline-primary d-none" onclick="downloadPDF()">View Report</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="petition-details.js"></script>
+</body>
+</html>

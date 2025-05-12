@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+}
+
+.content {
+  flex-grow: 1;
+  background-color: #f5f4ff;
+  min-height: 100vh;
+}
+.card h4{
+    color: #4b3aff;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #ffffff;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar nav ul li {
+  margin: 20px 0;
+  padding-left: 15px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  color: #4b3aff;
+  text-decoration: none;
+  font-weight: 500;
+  gap: 10px;
+}
+
+.sidebar .icon {
+  font-size: 22px;
+}
+
+.sidebar .label {
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar.collapsed .label {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: #ffff;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  height: 60px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5a5aff;
+}
+
+.toggle-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.department-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  font-size: 18px;
+  color: #5a5aff;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background-color: #5a5aff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.timeline-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.timeline-list li {
+  padding: 8px 0;
+  border-left: 3px solid #4b3aff;
+  margin-left: 10px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.timeline-list li::before {
+  content: "●";
+  position: absolute;
+  left: -11px;
+  color: #4b3aff;
+}
+
+#geoMapLink a {
+  margin-top: 8px;
+  display: inline-block;
+  font-size: 14px;
+}
+.primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.primary-actions .btn {
+  flex-grow: 1;
+  min-width: 120px;
+}
+
+#forwardDropdown {
+  display: none;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+#successMsg {
+  display: inline-block;
+  margin-right: 12px;
+  vertical-align: middle;
+}

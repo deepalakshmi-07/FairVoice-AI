@@ -3,9 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Official Dashboard - Approved petitions</title>
+    <link rel="stylesheet" href="official-dashboard.css" />
   </head>
-  <body>
-    <h2>Official dashboard</h2>
+<body>
+    <!-- Header -->
+<header class="header">
+  <div class="left-section">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="logo">FairVoice</div>
+  </div>
+  <div class="department-title"><strong>Education Department</strong></div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
+
+
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <nav>
+          <ul>
+            <li><a href="official-dashboard.html"><span class="icon">📋</span><span class="label">All </span></a></li>
+            <li><a href="urgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
+            <li><a href="repeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
+            <li><a href="approv.html"><span class="icon">✅</span><span class="label">Approved</span></a></li>
+            <li><a href="complete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+          </ul>
+        </nav>
+      </aside>
+      <!-- Main Content -->
+    <main class="main-content">
+      <h1>Welcome, Officer!</h1>
+      <p>Here are the active petitions submitted by citizens:</p>
+    
+     <a class="petition-box" href="petition-details.html">
+      <div class="petition-title">Increase Teacher Salaries</div>
+      <div class="petition-detail">Submitted on : 2025-05-01</div>
+      <div class="petition-detail">District : East Zone</div>
+      <div class="petition-detail">Status :
+        <span class="status approved">Approved</span>
+      </div>
+    </a>
+
+
+    </main>
+    </div>
+
+    <!-- Script -->
+    <script src="official-dashboard.js"></script>
   </body>
 </html>

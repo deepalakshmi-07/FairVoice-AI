@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9ff;
+    color: #222;
+  }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: #ffff;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  height: 40px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5a5aff;
+}
+
+.toggle-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.department-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  font-size: 18px;
+  color: #5a5aff;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background-color: #5a5aff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+  
+  /* Layout */
+  .container {
+    display: flex;
+    min-height: calc(100vh - 60px);
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 200px;
+    background-color: #ffffff;
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .sidebar.collapsed {
+    width: 60px;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+  }
+  
+  .sidebar nav ul li {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15px;
+  }
+  
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    color: #4b3aff;
+    text-decoration: none;
+    font-weight: 500;
+    gap: 10px;
+  }
+  
+  .sidebar .icon {
+    font-size: 22px;
+  }
+  
+  .sidebar .label {
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+  }
+  
+  .sidebar.collapsed .label {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+  }
+  
+  /* Main content */
+  
+ .main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9ff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Petition grid */
+.petition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.petition-box {
+  display: block;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin: 10px;
+  text-decoration: none;
+  color: #000;
+  width: 100%;
+  max-width: 300px;
+  min-height: 160px;
+  transition: transform 0.2s;
+}
+
+.petition-box:hover {
+  transform: translateY(-5px);
+}
+.petition-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #4f46e5;
+  margin-bottom: 12px;
+}
+
+.petition-detail {
+  font-size: 1rem;
+  margin: 4px 0;
+  color: #444;
+}
+.status {
+  font-weight: 600;
+  padding-left: 5px;
+}
+
+.status.Approved {
+  color: green;
+}
+
+.status.pending {
+  color: orange;
+}
+
+.status.rejected {
+  color: red;
+}
+
+.status.completed {
+  color: blue;
+}
