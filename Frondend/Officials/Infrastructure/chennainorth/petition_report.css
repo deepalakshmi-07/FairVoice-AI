@@ -120,70 +120,27 @@ body {
   left: -11px;
   color: #4b3aff;
 }
-.escalate-modal {
-  display: none;
-  position: fixed;
-  z-index: 1050;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
-.escalate-modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+#geoMapLink a {
+  margin-top: 8px;
+  display: inline-block;
+  font-size: 14px;
 }
-
-.escalate-modal-content h2 {
-  text-align: center;
+.primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-.escalate-modal-content label {
-  display: block;
+.primary-actions .btn {
+  flex-grow: 1;
+  min-width: 120px;
+}
+
+#forwardDropdown {
+  display: none;
   margin-top: 10px;
-  font-weight: 600;
-}
-
-.escalate-modal-content textarea,
-.escalate-modal-content select,
-.escalate-modal-content input[type="file"] {
   width: 100%;
-  margin-top: 5px;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.escalate-modal-content button {
-  margin-top: 15px;
-  width: 100%;
-  padding: 10px;
-  background-color: #4b3aff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.escalate-modal-content .close {
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  color: #aaa;
-  cursor: pointer;
-}
-
-.escalate-modal-content .close:hover {
-  color: #000;
+  max-width: 300px;
 }

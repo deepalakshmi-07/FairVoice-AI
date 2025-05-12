@@ -6,45 +6,57 @@ body {
     color: #222;
   }
 .header {
-    background-color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  
-  .logo {
-    font-size: 20px;
-    font-weight: 600;
-    color: #4b3aff;
-  }
-  
-  .logout-btn {
-    background-color: #4b3aff;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
-  .logout-btn:hover {
-    background-color: #372dff;
-  }
-  
-  .toggle-btn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    margin-right: 12px;
-    color: #4b3aff;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: #ffff;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  height: 40px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5a5aff;
+}
+
+.toggle-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.department-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  font-size: 18px;
+  color: #5a5aff;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background-color: #5a5aff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
   
   /* Layout */
   .container {
@@ -106,35 +118,41 @@ body {
   }
   
   /* Main content */
-  .main-content {
-    flex: 1;
-    padding: 40px;
-  }
   
-  .petition-grid {
+ .main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9ff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Petition grid */
+.petition-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  padding: 20px;
+  width: 100%;
 }
 
 .petition-box {
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
+  display: block;
+  background-color: #fff;
   border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin: 10px;
   text-decoration: none;
-  color: #222;
-  height: auto;
+  color: #000;
+  width: 100%;
+  max-width: 300px;
+  min-height: 160px;
+  transition: transform 0.2s;
 }
 
 .petition-box:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
-
 .petition-title {
   font-size: 1.1rem;
   font-weight: bold;
@@ -143,17 +161,27 @@ body {
 }
 
 .petition-detail {
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin: 4px 0;
   color: #444;
 }
+.status {
+  font-weight: 600;
+  padding-left: 5px;
+}
 
-.status.approved {
+.status.Approved {
   color: green;
 }
+
 .status.pending {
   color: orange;
 }
+
 .status.rejected {
   color: red;
+}
+
+.status.completed {
+  color: blue;
 }

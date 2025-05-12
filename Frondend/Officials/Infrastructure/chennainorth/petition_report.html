@@ -38,23 +38,60 @@
         <h4>User & Petition Info</h4><br>
         <p><strong>Name:</strong> <span id="name">Amit Kumar</span></p>
         <p><strong>Phone:</strong> <span id="phone">9876543210</span></p>
-        <p><strong>Location:</strong> <span id="location">Delhi, India</span></p>
-        <p><strong>Title:</strong> <span id="title">Repair the main road</span></p>
-        <p><strong>Detail:</strong> <span id="detail">The road is severely damaged and unsafe.</span></p>
-        <p><strong>Submitted Date:</strong> <span id="submittedDate">2025-04-15</span></p>
+        <p><strong>District:</strong> <span id="District">Delhi, India</span></p>
+        <p><strong>Petition Title:</strong> <span id="title">Repair the main road</span></p>
+        <p><strong>Petition Detail:</strong> <span id="detail">The road is severely damaged and unsafe.</span></p>
+        <p><strong>Submitted on:</strong> <span id="submittedDate">2025-04-15</span></p>
         <p><strong>Deadline:</strong> <span id="deadline"></span></p>
 
+        
+        <div class="mb-3">
+          <p>
+            <strong>Geolocation Photo:</strong>
+            <span id="geoMapLink" class="ms-2"></span>
+          </p>
 
+          <img id="geoPhoto" src="phtot.jpg" alt="Geolocation Photo" class="img-fluid_rounded" />
+        </div>
+
+        <div class="mb-3">
+          <p><strong>Related Photo:</strong></p>
+          <img id="relatedPhoto" src="related_photo.jpg" alt="Related Photo" class="img-fluid_rounded" />
+        </div>
+
+        <!-- Primary Actions -->
+        <div class="d-flex mb-3">
+          <button class="btn btn-success me-2" onclick="approvePetition()">Approve</button>
+          <button class="btn btn-danger me-2" onclick="rejectPetition()">Reject</button>
+          <button class="btn btn-warning me-2" onclick="toggleForward()">Forward</button>
+          <button class="btn btn-danger me-2" onclick="activateEscalate()">Escalate</button>
+          <button class="btn btn-primary" onclick="activateReport()">Report</button>
+        </div>
+
+        <!-- Forward Dropdown -->
         <p class="d-flex align-items-center">
-            <strong class="me-2">Select Status:</strong>
-            <select class="form-select w-auto" id="statusSelect" onchange="handleStatusChange()">
-                <option value="">-- Choose --</option>
-                <option value="on-progress">On-progress</option>
-                <option value="report">Report</option>
-                <option value="escalate">Escalate</option>
-            </select>
+          <div id="forwardDropdown" style="display: none;">
+          <label for="departmentSelect me-2"><strong> Department:</strong></label>
+          <select id="departmentSelect w-auto">
+            <option value="">--Select--</option>
+            <option value="Health">Health</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Social_welfare">Social welfare</option>
+            <option value="Law & order">Law & Order</option>
+          </select>
+          </div>
         </p>
 
+        <!-- Status Dropdown -->
+        <p class="d-flex align-items-center">
+          <strong class="me-2">Select Status:</strong>
+          <select class="form-select w-auto" id="statusSelect" onchange="handleStatusChange()">
+            <option value="">-- Choose --</option>
+            <option value="on-progress">On-progress</option>
+            <option value="report">Report</option>
+            <option value="escalate">Escalate</option>
+          </select>
+        </p>
 
         <!-- Report Section -->
         <div id="reportSection" class="d-none">
@@ -62,7 +99,6 @@
             <h5>Status Timeline</h5>
             <ul class="timeline-list" id="timelineList"></ul>
           </div>
-
 
           <div class="mb-3">
             <label for="finalRemark" class="form-label">Final Remark:</label>
@@ -80,31 +116,7 @@
           </div>
         </div>
 
-        <!-- Escalate Section -->
-         <div id="escalateSection" class="d-none mt-4">
-            <h5>Escalate the Petition</h5>
-            <form id="escalateForm">
-                <div class="mb-3">
-                    <label for="authority" class="form-label">Escalate To:</label>
-                    <select id="authority" class="form-select" required>
-                        <option value="Deputy Commissioner">Deputy Commissioner</option>
-                        <option value="Chief Secretary">Chief Secretary</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="escalateReason" class="form-label">Reason:</label>
-                    <textarea id="escalateReason" class="form-control" placeholder="Enter reason for escalation..." required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="escalateFile" class="form-label">Attach File (Optional):</label>
-                    <input type="file" id="escalateFile" class="form-control" />
-                </div>
-                <button type="submit" class="btn btn-danger">Submit Escalation</button>
-            </form>
-        </div>
-
-        
-      
+      </div>
     </main>
   </div>
 
