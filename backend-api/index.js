@@ -4,8 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/userModel.js");
 const authRoutes = require("./routes/authRoutes");
-const registerOfficial = require("./routes/register.js");
-const authOfficials = require("./routes/authOfficials.js");
+// const registerOfficial = require("./routes/register.js");
+// const authOfficials = require("./routes/authOfficials.js");
 const petitionRoutes = require("./routes/petitionRoutes");
 const userRoutes = require("./routes/userRoutes");
 
@@ -16,9 +16,15 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/petitions", petitionRoutes);
-app.use("/api/officials", registerOfficial);
-app.use("/api/authenticateOfficial", authOfficials);
+// app.use("/api/officials", registerOfficial);
+// app.use("/api/authenticateOfficial", authOfficials);
 app.use("/api/user", userRoutes);
+
+// Official email/password login
+app.use(require("./routes/officialAuthRoutes"));
+
+// Admin-only routes
+app.use(require("./routes/adminRoutes"));
 
 app.get("/", (req, res) => {
   res.send("Hello World from backend API Server.");
