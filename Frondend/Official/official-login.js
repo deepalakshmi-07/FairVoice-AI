@@ -1,36 +1,50 @@
 // official-login.js
 
-// point Axios at your backend
+// Point Axios at your backend
 axios.defaults.baseURL = "http://localhost:3000";
 
 const form = document.getElementById("loginForm");
 const errorMsg = document.getElementById("errorMsg");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const toggleBtn = document.getElementById("togglePassword");
 
+// 1. Auto-convert email to lowercase as user types
+emailInput.addEventListener("input", () => {
+  emailInput.value = emailInput.value.toLowerCase();
+});
+
+// 2. Toggle password visibility
+toggleBtn.addEventListener("click", () => {
+  const type =
+    passwordInput.getAttribute("type") === "password" ? "text" : "password";
+  passwordInput.setAttribute("type", type);
+
+  // Switch the icon class
+  toggleBtn.classList.toggle("bi-eye-fill");
+  toggleBtn.classList.toggle("bi-eye-slash-fill");
+});
+
+// 3. Handle form submission
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   errorMsg.textContent = "";
 
-  // build payload
   const payload = {
-    email: form.email.value.trim(),
-    password: form.password.value,
+    email: emailInput.value.trim(),
+    password: passwordInput.value,
   };
 
   try {
-    // call your official‐login endpoint
     const { data } = await axios.post("/api/auth/official-login", payload);
-
-    // store the token for later calls
     localStorage.setItem("token", data.token);
 
-    // redirect based on role
     if (data.role === "admin") {
-      window.location.href = "/Admin/admin-dashboard.html";
+      window.location.replace("/Frondend/Admin/admin-dashboard.html");
     } else {
-      window.location.href = "/Official/official-dashboard.html";
+      window.location.replace("/Frondend/Official/official-dashboard.html");
     }
   } catch (err) {
-    // display server-sent error or fallback
     errorMsg.textContent = err.response?.data?.message || "Login failed";
   }
 });

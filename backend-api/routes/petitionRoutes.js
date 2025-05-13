@@ -4,12 +4,10 @@ const Petition = require("../models/petitionModel");
 const multer = require("multer");
 const path = require("path");
 const exifr = require("exifr"); // For EXIF GPS extraction
-const authMiddleware = require("../middleware/authMiddleware"); // <-- import your JWT middleware
-const axios = require("axios"); // <-- added for AI model calls
+const authMiddleware = require("../middleware/authMiddleware");
+const axios = require("axios"); // for AI calls
 
-// ------------------------------
 // 1. Configure Multer Storage
-// ------------------------------
 const photoStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     if (file.fieldname === "photo") {
@@ -27,148 +25,140 @@ const photoStorage = multer.diskStorage({
   },
 });
 
-// ------------------------------
 // 2. Configure Multer Middleware
-// ------------------------------
 const upload = multer({ storage: photoStorage });
 const uploadFiles = upload.fields([
   { name: "photo", maxCount: 1 },
   { name: "attachments", maxCount: 10 },
 ]);
 
-// ------------------------------
 // 3. POST /api/petitions/submit
-// ------------------------------
-router.post(
-  "/submit",
-  authMiddleware, // <-- protect this route; req.user will be set
-  uploadFiles, // <-- handle files
-  async (req, res) => {
-    console.log("✅ /submit route hit by user:", req.user.id);
+router.post("/submit", authMiddleware, uploadFiles, async (req, res) => {
+  console.log("✅ /submit route hit by user:", req.user.id);
 
-    try {
-      // Pull userId from the verified JWT payload
-      const userId = req.user.id;
+  try {
+    const userId = req.user.id;
+    const {
+      name,
+      phoneNumber,
+      district,
+      taluk,
+      subDistrict,
+      petitionLocation,
+      petitionTitle,
+      petitionDescription,
+    } = req.body;
 
-      // Now destructure the rest from req.body
-      const {
-        name,
-        phoneNumber,
-        district,
-        taluk,
-        subDistrict,
-        petitionLocation,
-        petitionTitle,
-        petitionDescription,
-      } = req.body;
+    // 4. Get Uploaded File Paths
+    const photoPath = req.files.photo
+      ? `/uploads/photoGeoloc/${req.files.photo[0].filename}`
+      : "";
+    const attachmentsPaths = req.files.attachments
+      ? req.files.attachments.map((f) => `/uploads/attachments/${f.filename}`)
+      : [];
 
-      // --------------------------
-      // 4. Get Uploaded File Paths
-      // --------------------------
-      const photoPath = req.files.photo
-        ? `/uploads/photoGeoloc/${req.files.photo[0].filename}`
-        : "";
-
-      const attachmentsPaths = req.files.attachments
-        ? req.files.attachments.map((f) => `/uploads/attachments/${f.filename}`)
-        : [];
-
-      // --------------------------
-      // 5. Extract Geolocation
-      // --------------------------
-      let geolocation;
-      if (req.files.photo) {
-        try {
-          const gpsData = await exifr.gps(req.files.photo[0].path);
-          if (gpsData?.latitude && gpsData?.longitude) {
-            geolocation = {
-              latitude: gpsData.latitude,
-              longitude: gpsData.longitude,
-            };
-          }
-        } catch (err) {
-          console.warn("EXIF geolocation failed:", err.message);
+    // 5. Extract Geolocation
+    let geolocation;
+    if (req.files.photo) {
+      try {
+        const gpsData = await exifr.gps(req.files.photo[0].path);
+        if (gpsData?.latitude && gpsData?.longitude) {
+          geolocation = {
+            latitude: gpsData.latitude,
+            longitude: gpsData.longitude,
+          };
         }
-      }
-
-      // --------------------------
-      // 6. Call AI Models
-      // --------------------------
-      // Call Categorization Model
-      let category = "Uncategorized";
-      try {
-        console.log("▶️ Calling categorization on:", petitionTitle);
-        const { data } = await axios.post(
-          "http://localhost:8000/predict-department",
-          { text: petitionTitle }
-        );
-        console.log("📥 categorization response:", data);
-        category = data.department;
       } catch (err) {
-        console.error("Error calling categorization model:", err.message);
+        console.warn("EXIF geolocation failed:", err.message);
       }
-
-      // Call Urgency Detection Model
-      let urgency = "Not Urgent";
-      try {
-        console.log("▶️ Calling urgency on:", petitionTitle);
-        const { data } = await axios.post(
-          "http://localhost:8000/predict-urgency",
-          { text: petitionTitle }
-        );
-        console.log("📥 urgency response:", data);
-        urgency = data.urgency;
-      } catch (err) {
-        console.error("Error calling urgency model:", err.message);
-      }
-
-      // --------------------------
-      // 7. Create & Save Petition
-      // --------------------------
-      const newPetition = new Petition({
-        userId,
-        name,
-        phoneNumber,
-        district,
-        taluk,
-        subDistrict,
-        petitionLocation,
-        petitionTitle,
-        petitionDescription,
-        photo: photoPath,
-        attachments: attachmentsPaths,
-        ...(geolocation && { geolocation }),
-        category, // ← AI field
-        urgency, // ← AI field
-      });
-
-      const saved = await newPetition.save();
-
-      // --------------------------
-      // 8. Respond with Success
-      // --------------------------
-      return res.status(201).json({
-        message: "Petition submitted successfully",
-        petition: saved,
-      });
-    } catch (error) {
-      console.error("Error saving petition:", error);
-      return res.status(500).json({ error: "Failed to store petition" });
     }
-  }
-);
 
-// GET /api/petitions/mine
+    // 6. Call AI Models
+    // Categorization
+    let category = "Uncategorized";
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/predict-department",
+        { text: petitionTitle }
+      );
+      category = data.department;
+    } catch (err) {
+      console.error("Error calling categorization model:", err.message);
+    }
+
+    // Urgency
+    let urgency = "Not Urgent";
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/predict-urgency",
+        { text: petitionTitle }
+      );
+      urgency = data.urgency;
+    } catch (err) {
+      console.error("Error calling urgency model:", err.message);
+    }
+
+    // Repetition Detection
+    // 6a. Fetch only titles and _id from DB
+    const existingDocs = await Petition.find({}, "petitionTitle").lean();
+    const existingTitles = existingDocs.map((d) => d.petitionTitle);
+
+    let isRepetitive = false;
+    let duplicateWith = [];
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/predict-repetition",
+        {
+          text: petitionTitle,
+          existing: existingTitles,
+        }
+      );
+      isRepetitive = data.is_repetitive;
+      duplicateWith = data.duplicate_indices.map((i) => existingDocs[i]._id);
+    } catch (err) {
+      console.error("Error calling repetition model:", err.message);
+    }
+
+    // 7. Create & Save Petition
+    const newPetition = new Petition({
+      userId,
+      name,
+      phoneNumber,
+      district,
+      taluk,
+      subDistrict,
+      petitionLocation,
+      petitionTitle,
+      petitionDescription,
+      photo: photoPath,
+      attachments: attachmentsPaths,
+      ...(geolocation && { geolocation }),
+      category, // AI field
+      urgency, // AI field
+      isRepetitive, // repetition flag
+      duplicateWith, // array of ObjectId
+    });
+
+    const saved = await newPetition.save();
+
+    // 8. Respond with Success
+    return res.status(201).json({
+      message: "Petition submitted successfully",
+      petition: saved,
+    });
+  } catch (error) {
+    console.error("Error saving petition:", error);
+    return res.status(500).json({ error: "Failed to store petition" });
+  }
+});
+
+// GET /api/petitions/mine (unchanged)
 router.get("/mine", authMiddleware, async (req, res) => {
   try {
-    // req.user.id is set by authMiddleware
     const userId = req.user.id;
-
-    // fetch and sort newest first
     const petitions = await Petition.find({ userId })
       .sort({ createdAt: -1 })
       .select("petitionTitle status grievanceId createdAt");
-
     res.status(200).json(petitions);
   } catch (err) {
     console.error("Fetch my petitions error:", err);

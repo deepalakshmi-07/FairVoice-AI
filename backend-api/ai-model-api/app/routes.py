@@ -1,8 +1,10 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+from typing import List # for repetition model
 from rejectionModel.utils import predict_status
 from categorizationModel.utils import predict_department
 from urgencyModel.utils import predict_urgency
+from repetitionModel.utils import predict_repetition
 
 # Create a router
 router = APIRouter()
@@ -50,6 +52,17 @@ async def get_urgency_prediction(request: UrgencyRequest):
 
 # ---- Repetition Detection Model Route ----
 
+class RepetitionRequest(BaseModel):
+    text: str
+    existing: List[str]
+
+class RepetitionResponse(BaseModel):
+    is_repetitive: bool
+    duplicate_indices: List[int]
+
+@router.post("/predict-repetition", response_model=RepetitionResponse)
+async def get_repetition(request: RepetitionRequest):
+    return predict_repetition(request.text, request.existing)
 
 
 @router.get("/test")

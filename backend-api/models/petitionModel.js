@@ -42,6 +42,10 @@ const petitionSchema = new mongoose.Schema(
     // ← NEW AI fields
     category: { type: String, default: "Uncategorized" },
     urgency: { type: String, default: "Not Urgent" },
+
+    // ← NEW REPETITION fields
+    isRepetitive: { type: Boolean, default: false },
+    duplicateWith: [{ type: mongoose.Schema.Types.ObjectId, ref: "Petition" }],
   },
   { timestamps: true } // auto adds createdAt and updatedAt
 );

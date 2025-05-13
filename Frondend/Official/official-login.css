@@ -54,6 +54,24 @@ body {
   outline: none;
 }
 
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .form-input {
+  padding-right: 10px; /* space for the icon */
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #555;
+  cursor: pointer;
+}
+
 .btn-login {
   width: 100%;
   padding: 12px;

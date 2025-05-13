@@ -1,12 +1,10 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const path = require("path");
 const User = require("./models/userModel.js");
 const authRoutes = require("./routes/authRoutes");
-// const registerOfficial = require("./routes/register.js");
-// const authOfficials = require("./routes/authOfficials.js");
 const petitionRoutes = require("./routes/petitionRoutes");
 const userRoutes = require("./routes/userRoutes");
 
@@ -15,12 +13,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "../Frondend")));
-
 app.use("/api/auth", authRoutes);
 app.use("/api/petitions", petitionRoutes);
-// app.use("/api/officials", registerOfficial);
-// app.use("/api/authenticateOfficial", authOfficials);
 app.use("/api/user", userRoutes);
 
 // Official email/password login
