@@ -6,17 +6,16 @@
     <title>Official Dashboard - Approved petitions</title>
     <link rel="stylesheet" href="official-dashboard.css" />
   </head>
-<body>
+  <body>
     <!-- Header -->
-<header class="header">
-  <div class="left-section">
-    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-    <div class="logo">FairVoice</div>
-  </div>
-  <div class="department-title"><strong>Education Department</strong></div>
-  <button class="logout-btn" onclick="logout()">Logout</button>
-</header>
-
+    <header class="header">
+      <div class="left-section">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <div class="logo">FairVoice</div>
+      </div>
+      <div class="department-title"><strong>Education Department</strong></div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
 
     <div class="container">
       <!-- Sidebar -->
@@ -28,28 +27,69 @@
             <li><a href="repeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
             <li><a href="approv.html"><span class="icon">✅</span><span class="label">Approved</span></a></li>
             <li><a href="complete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
+            <li><a href="#"><span class="icon">⏫</span><span class="label">Escalated</span></a></li>
           </ul>
         </nav>
       </aside>
+
       <!-- Main Content -->
-    <main class="main-content">
-      <h1>Welcome, Officer!</h1>
-      <p>Here are the active petitions submitted by citizens:</p>
-    
-     <a class="petition-box" href="petition-details.html">
-      <div class="petition-title">Increase Teacher Salaries</div>
-      <div class="petition-detail">Submitted on : 2025-05-01</div>
-      <div class="petition-detail">District : East Zone</div>
-      <div class="petition-detail">Status :
-        <span class="status approved">Approved</span>
-      </div>
-    </a>
+      <main class="main-content">
+        <h1>Welcome, Officer!</h1>
+        <p>Here are the active petitions submitted by citizens:</p>
 
+        <!-- Petition Overview Section -->
+        <div class="petition-overview">
+          <div class="overview-box">
+            <p><strong>Total:</strong> <span class="count" id="total-count">0</span></p>
+          </div>
+          <div class="overview-box">
+            <p><strong>Resolved:</strong> <span class="count" id="resolved-count">0</span></p>
+          </div>
+          <div class="overview-box">
+            <p><strong>Pending:</strong> <span class="count" id="pending-count">0</span></p>
+          </div>
+        </div>
 
-    </main>
+        <!-- Petition List -->
+       <div class="petition-container">
+        <a class="petition-box" href="petition-details.html" data-status="resolved">
+          <div class="petition-title">Increase Teacher Salaries</div>
+          <div class="petition-detail">Submitted on : 2025-05-01</div>
+          <div class="petition-detail">District : East Zone</div>
+          <div class="petition-detail">Status :
+            <span class="status approved">Approved</span>
+          </div>
+        </a>
+
+        <a class="petition-box" href="petition-details.html" data-status="pending">
+          <div class="petition-title">Upgrade School Infrastructure</div>
+          <div class="petition-detail">Submitted on : 2025-05-05</div>
+          <div class="petition-detail">District : South Zone</div>
+          <div class="petition-detail">Status :
+            <span class="status pending">Pending</span>
+          </div>
+        </a>
+        <a class="petition-box" href="petition-details.html" data-status="Completed">
+          <div class="petition-title">Upgrade School Infrastructure</div>
+          <div class="petition-detail">Submitted on : 2025-05-05</div>
+          <div class="petition-detail">District : South Zone</div>
+          <div class="petition-detail">Status :
+            <span class="status pending">Completed</span>
+          </div>
+        </a>
+        <a class="petition-box" href="petition-details.html" data-status="Completed">
+          <div class="petition-title">Upgrade School Infrastructure</div>
+          <div class="petition-detail">Submitted on : 2025-05-05</div>
+          <div class="petition-detail">District : South Zone</div>
+          <div class="petition-detail">Status :
+            <span class="status pending">Completed</span>
+          </div>
+        </a>
+       </div>
+      </main>
     </div>
 
-    <!-- Script -->
+    <!-- JavaScript -->
     <script src="official-dashboard.js"></script>
   </body>
 </html>

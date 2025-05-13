@@ -64,7 +64,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 30px;
+  padding: 12px 24px;
   background-color: #ffff;
   box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
   position: relative;
@@ -158,4 +158,13 @@ body {
   display: inline-block;
   margin-right: 12px;
   vertical-align: middle;
+}
+.card h6 {
+  font-weight: 600;
+  color:  #4b3aff;
+}
+
+.card p {
+  font-size: o.95rem;
+  margin: 0;
 }

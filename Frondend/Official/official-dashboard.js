@@ -1,81 +1,62 @@
+// Toggle Sidebar Function
 function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("collapsed");
-  }
-  function logout() {
-    // You can add real logout logic here (session clear, redirect etc.)
-    alert("You have been logged out!");
-    window.location.href = "/Main_home.html"; // Redirect to login page
-  }
-  function openModal(petition) {
-    document.getElementById("modalTitle").textContent = petition.title;
-    document.getElementById("modalName").textContent = petition.name;
-    document.getElementById("modalPhone").textContent = petition.phone;
-    document.getElementById("modalLocation").textContent = petition.location;
-    document.getElementById("modalDescription").textContent =
-      petition.description;
-  
-    // Documents
-    const docList = document.getElementById("modalDocuments");
-    docList.innerHTML = ""; // Clear previous
-    petition.documents.forEach((doc) => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${doc.url}" target="_blank">${doc.name}</a>`;
-      docList.appendChild(li);
-    });
-  
-    document.getElementById("petitionModal").style.display = "block";
-  }
-  
-  function closeModal() {
-    document.getElementById("petitionModal").style.display = "none";
-  }
-  
-  window.onclick = function (event) {
-    const modal = document.getElementById("petitionModal");
-    if (event.target == modal) {
-      closeModal();
+  document.getElementById("sidebar").classList.toggle("collapsed");
+}
+
+// Logout Function
+function logout() {
+  // Redirect to the homepage without allowing the user to go back
+  window.location.replace("../Main_home.html"); // Replace with the path to your homepage
+}
+
+// Petition Overview Count Logic
+function updatePetitionOverview() {
+  const petitions = document.querySelectorAll(".petition-box");
+  let total = petitions.length;
+  let resolved = 0;
+  let pending = 0;
+  let completed = 0;
+
+  petitions.forEach((petition) => {
+    const status = petition.querySelector(".status").textContent.trim().toLowerCase();
+    if (status === "approved") {
+      resolved++;
+    } else if (status === "pending") {
+      pending++;
+    } else if (status === "completed") {
+      completed++;
     }
+  });
+
+  document.getElementById("total-count").textContent = total;
+  document.getElementById("resolved-count").textContent = resolved;
+  document.getElementById("pending-count").textContent = pending;
+  document.getElementById("completed-count").textContent = completed;
+}
+
+// Petition Details Click - Opens a new page or can open a modal with the petition info
+function openPetitionDetails(petition) {
+  // In this case, we are just navigating to the petition details page
+  // You can use this function if you decide to display details in the same page via a modal
+  const petitionDetails = {
+    title: petition.querySelector(".petition-title").textContent,
+    status: petition.querySelector(".status").textContent,
+    submissionDate: petition.querySelector(".petition-detail").textContent, // Example for submission date
+    district: petition.querySelectorAll(".petition-detail")[1].textContent // Example for district
   };
-  function openForwardModal() {
-    document.getElementById("forwardModal").style.display = "block";
-  }
   
-  function closeForwardModal() {
-    document.getElementById("forwardModal").style.display = "none";
-  }
-  
-  document.getElementById("forwardForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    // Gather form data
-    const department = document.getElementById("department").value;
-    const reason = document.getElementById("reason").value;
-    const file = document.getElementById("file").files[0];
-  
-    // For now, we'll just log the data
-    console.log("Department:", department);
-    console.log("Reason:", reason);
-    if (file) {
-      console.log("File:", file.name);
-    }
-  
-    // Close the modal after submission
-    closeForwardModal();
+  // Example: You could navigate to a detailed petition page:
+  localStorage.setItem("petitionDetails", JSON.stringify(petitionDetails)); // Store details temporarily
+  window.location.href = "petition-details.html"; // Assuming you want to navigate to a new page for more details
+}
+
+// Run the petition overview count when the page loads
+document.addEventListener("DOMContentLoaded", updatePetitionOverview);
+
+// If you want to trigger the function from clicking a petition box, you could attach the `openPetitionDetails` function to each petition-box
+const petitionBoxes = document.querySelectorAll('.petition-box');
+petitionBoxes.forEach(petitionBox => {
+  petitionBox.addEventListener('click', function () {
+    openPetitionDetails(petitionBox);
   });
-  function logout() {
-    // Redirect to the homepage without allowing the user to go back
-    window.location.replace("../Main_home.html"); // Replace with the path to your homepage
-  }
-  function openReportModal() {
-    document.getElementById("reportModal").style.display = "block";
-  }
-  
-  function closeReportModal() {
-    document.getElementById("reportModal").style.display = "none";
-  }
-  
-  document.getElementById("reportForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("Report submitted successfully.");
-    closeReportModal();
-  });
-  
+});
