@@ -99,9 +99,20 @@ router.post("/submit", authMiddleware, uploadFiles, async (req, res) => {
     }
 
     // Repetition Detection
-    // 6a. Fetch only titles and _id from DB
-    const existingDocs = await Petition.find({}, "petitionTitle").lean();
-    const existingTitles = existingDocs.map((d) => d.petitionTitle);
+    // 6a. Define 30-day window
+    const DAYS_WINDOW = 30;
+    const sinceDate = new Date(Date.now() - DAYS_WINDOW * 24 * 60 * 60 * 1000);
+
+    // 6b. Fetch only same-dept, same-subDistrict, recent petitions
+    const candidates = await Petition.find(
+      {
+        category: category,
+        subDistrict: subDistrict,
+        createdAt: { $gte: sinceDate },
+      },
+      "petitionTitle"
+    ).lean();
+    const existingTitles = candidates.map((d) => d.petitionTitle);
 
     let isRepetitive = false;
     let duplicateWith = [];
@@ -114,7 +125,24 @@ router.post("/submit", authMiddleware, uploadFiles, async (req, res) => {
         }
       );
       isRepetitive = data.is_repetitive;
-      duplicateWith = data.duplicate_indices.map((i) => existingDocs[i]._id);
+
+      if (isRepetitive) {
+        // Map indices → titles
+        const matchedTitles = data.duplicate_indices.map(
+          (i) => existingTitles[i]
+        );
+        // Fetch all matching documents by title within the same filter
+        const duplicates = await Petition.find(
+          {
+            category: category,
+            subDistrict: subDistrict,
+            petitionTitle: { $in: matchedTitles },
+            createdAt: { $gte: sinceDate },
+          },
+          "_id"
+        ).lean();
+        duplicateWith = duplicates.map((d) => d._id);
+      }
     } catch (err) {
       console.error("Error calling repetition model:", err.message);
     }

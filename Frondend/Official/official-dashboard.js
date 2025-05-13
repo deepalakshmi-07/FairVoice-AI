@@ -1,3 +1,16 @@
+// official-dashboard.js
+
+// 1. Block back‑button so “Back” can’t return to this page
+window.history.replaceState(null, null, window.location.href);
+window.addEventListener("popstate", () => {
+  window.history.pushState(null, null, window.location.href);
+});
+
+// 2. Guard: if no JWT, redirect immediately to homepage
+if (!localStorage.getItem("token")) {
+  window.location.replace("/Frondend/Petitioner/Main_home.html");
+}
+
 // Toggle Sidebar Function
 function toggleSidebar() {
   document.getElementById("sidebar").classList.toggle("collapsed");
@@ -5,8 +18,10 @@ function toggleSidebar() {
 
 // Logout Function
 function logout() {
-  // Redirect to the homepage without allowing the user to go back
-  window.location.replace("../Main_home.html"); // Replace with the path to your homepage
+  // 1) Remove the JWT
+  localStorage.removeItem("token");
+  // 2) Redirect to the homepage without allowing the user to go back
+  window.location.replace("/Frondend/Petitioner/Main_home.html");
 }
 
 // Petition Overview Count Logic
@@ -18,7 +33,10 @@ function updatePetitionOverview() {
   let completed = 0;
 
   petitions.forEach((petition) => {
-    const status = petition.querySelector(".status").textContent.trim().toLowerCase();
+    const status = petition
+      .querySelector(".status")
+      .textContent.trim()
+      .toLowerCase();
     if (status === "approved") {
       resolved++;
     } else if (status === "pending") {
@@ -42,21 +60,29 @@ function openPetitionDetails(petition) {
     title: petition.querySelector(".petition-title").textContent,
     status: petition.querySelector(".status").textContent,
     submissionDate: petition.querySelector(".petition-detail").textContent, // Example for submission date
-    district: petition.querySelectorAll(".petition-detail")[1].textContent // Example for district
+    district: petition.querySelectorAll(".petition-detail")[1].textContent, // Example for district
   };
-  
+
   // Example: You could navigate to a detailed petition page:
   localStorage.setItem("petitionDetails", JSON.stringify(petitionDetails)); // Store details temporarily
   window.location.href = "petition-details.html"; // Assuming you want to navigate to a new page for more details
 }
 
-// Run the petition overview count when the page loads
-document.addEventListener("DOMContentLoaded", updatePetitionOverview);
+// Run setup after the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Attach logout handler
+  document.getElementById("logoutBtn").addEventListener("click", logout);
 
-// If you want to trigger the function from clicking a petition box, you could attach the `openPetitionDetails` function to each petition-box
-const petitionBoxes = document.querySelectorAll('.petition-box');
-petitionBoxes.forEach(petitionBox => {
-  petitionBox.addEventListener('click', function () {
-    openPetitionDetails(petitionBox);
+  // (If you have a sidebar toggle button, attach it here)
+  // document.getElementById("sidebarToggleBtn").addEventListener("click", toggleSidebar);
+
+  // Run the petition overview count
+  updatePetitionOverview();
+
+  // Attach the petition-details click handler to each petition-box
+  document.querySelectorAll(".petition-box").forEach((petitionBox) => {
+    petitionBox.addEventListener("click", () =>
+      openPetitionDetails(petitionBox)
+    );
   });
 });

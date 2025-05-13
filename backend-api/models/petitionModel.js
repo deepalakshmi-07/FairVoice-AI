@@ -46,9 +46,23 @@ const petitionSchema = new mongoose.Schema(
     // ← NEW REPETITION fields
     isRepetitive: { type: Boolean, default: false },
     duplicateWith: [{ type: mongoose.Schema.Types.ObjectId, ref: "Petition" }],
+
+    // ← DEADLINE field (30 days after submission)
+    deadline: { type: Date }, // automatically set before saving
   },
   { timestamps: true } // auto adds createdAt and updatedAt
 );
+
+// ← Mongoose middleware to set deadline 30 days after createdAt
+petitionSchema.pre("save", function (next) {
+  if (!this.deadline) {
+    const createdAt = this.createdAt || new Date();
+    const deadlineDate = new Date(createdAt);
+    deadlineDate.setDate(deadlineDate.getDate() + 30);
+    this.deadline = deadlineDate;
+  }
+  next();
+});
 
 const Petition = mongoose.model("Petition", petitionSchema);
 module.exports = Petition;
