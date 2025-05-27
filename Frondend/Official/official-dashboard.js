@@ -1,4 +1,13 @@
 // official-dashboard.js
+// maps the DB “value” → full name
+const DEPARTMENT_LABELS = {
+  health: "Health",
+  law: "Law and Order",
+  infra: "Infrastructure",
+  education: "Education",
+  welfare: "Social Welfare",
+  admin: "Administration",
+};
 
 // 1. Block back‑button so “Back” can’t return to this page
 window.history.replaceState(null, null, window.location.href);
@@ -68,16 +77,90 @@ function openPetitionDetails(petition) {
   window.location.href = "petition-details.html"; // Assuming you want to navigate to a new page for more details
 }
 
+// --- JWT parse helper (no extra library) ---
+function parseJwt(token) {
+  const base64Url = token.split(".")[1];
+  const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+  const jsonPayload = decodeURIComponent(
+    atob(base64)
+      .split("")
+      .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+      .join("")
+  );
+  return JSON.parse(jsonPayload);
+}
+
+// --- welcome text factory ---
+function getWelcomeText(role, region, department) {
+  const prettyDept = DEPARTMENT_LABELS[department.toLowerCase()] || department;
+  const deptLabel = `${prettyDept} department`;
+
+  switch (role) {
+    case "state":
+      return {
+        line1: `Welcome, State Officer of ${region}`,
+        line2: deptLabel,
+        line3:
+          "Empowering districts to serve citizens better across the state.",
+      };
+    case "district":
+      return {
+        line1: `Welcome, District Officer – ${region}`,
+        line2: deptLabel,
+        line3: `Leading effective petition resolution in ${region}.`,
+      };
+    case "subdistrict":
+      return {
+        line1: `Welcome, Subdistrict Officer – ${region}`,
+        line2: deptLabel,
+        line3: `Addressing local grievances in ${region} with care and urgency.`,
+      };
+    default:
+      return {
+        line1: "Welcome",
+        line2: deptLabel,
+        line3: "",
+      };
+  }
+}
+
 // Run setup after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
+  // 1) grab the token
+  const token = localStorage.getItem("token");
+  if (!token) {
+    // no token? kick them out
+    window.location.replace("/Frondend/Petitioner/Main_home.html");
+    return;
+  }
+
+  // 2) parse it once
+  const { role, region, department } = parseJwt(token);
+
+  // DYNAMIC WELCOME (uses the role we just parsed)
+  const { line1, line2, line3 } = getWelcomeText(role, region, department);
+  document.getElementById("welcome-line1").innerText = line1;
+  document.getElementById("welcome-line2").innerText = line2;
+  document.getElementById("welcome-line3").innerText = line3;
+
+  // ——— STATE-ONLY OVERVIEW ———
+  const overviewEl = document.getElementById("petition-overview");
+
+  if (role === "state") {
+    // state officers see it:
+    overviewEl.style.display = ""; // use default CSS (flex/block)
+    updatePetitionOverview(); // populate counts
+  } else {
+    // everyone else: hide it
+    overviewEl.style.display = "none";
+  }
+  // ————————————————
+
   // Attach logout handler
   document.getElementById("logoutBtn").addEventListener("click", logout);
 
   // (If you have a sidebar toggle button, attach it here)
   // document.getElementById("sidebarToggleBtn").addEventListener("click", toggleSidebar);
-
-  // Run the petition overview count
-  updatePetitionOverview();
 
   // Attach the petition-details click handler to each petition-box
   document.querySelectorAll(".petition-box").forEach((petitionBox) => {
