@@ -1,54 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Petition Detail</title>
-  <link rel="stylesheet" href="viewreport.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-</head>
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="left-section">
-      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-      <div class="logo">FairVoice</div>
-    </div>
-    <div class="department-title"><strong>Education Department</strong></div>
-    <button class="logout-btn" onclick="logout()">Logout</button>
-  </header>
-
-  <!-- Layout -->
-  <div class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-      <nav>
-        <ul>
-          <li><a href="official-dashboard.html"><span class="icon">📋</span><span class="label">All</span></a></li>
-          <li><a href="urgent.html"><span class="icon">🚨</span><span class="label">Urgent</span></a></li>
-          <li><a href="repeat.html"><span class="icon">🔁</span><span class="label">Repetitive</span></a></li>
-          <li><a href="approv.html"><span class="icon">✅</span><span class="label">Approved</span></a></li>
-          <li><a href="complete.html"><span class="icon">✔️</span><span class="label">Completed</span></a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <h2 id="petitionTitle">Report</h2>
-
-      <div class="action-buttons">
-        <button class="download-btn" onclick="downloadAsPDF()">
-          <span class="icon">📥</span> Download as PDF
-        </button>
-        <a href="official-dashboard.html" class="back-link">← Back</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petition Detail</title>
+    <link rel="stylesheet" href="viewreport.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="left-section">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <div class="logo">FairVoice</div>
       </div>
+      <!-- <div class="department-title"><strong>Education Department</strong></div> -->
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
 
-      <table id="petitionTable"></table>
-    </main>
-  </div>
+    <!-- Layout -->
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <nav>
+          <ul>
+            <li>
+              <a href="official-dashboard.html"
+                ><span class="icon">📋</span><span class="label">All</span></a
+              >
+            </li>
+            <li>
+              <a href="urgent.html"
+                ><span class="icon">🚨</span
+                ><span class="label">Urgent</span></a
+              >
+            </li>
+            <li>
+              <a href="repeat.html"
+                ><span class="icon">🔁</span
+                ><span class="label">Repetitive</span></a
+              >
+            </li>
+            <li>
+              <a href="approv.html"
+                ><span class="icon">✅</span
+                ><span class="label">Approved</span></a
+              >
+            </li>
+            <li>
+              <a href="complete.html"
+                ><span class="icon">✔️</span
+                ><span class="label">Completed</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-  <script src="viewreport.js"></script>
-</body>
+      <!-- Main Content -->
+      <main class="main-content">
+        <h2 id="petitionTitle">Report</h2>
+
+        <div class="action-buttons">
+          <button class="download-btn" onclick="downloadAsPDF()">
+            <span class="icon">📥</span> Download as PDF
+          </button>
+          <a href="official-dashboard.html" class="back-link">← Back</a>
+        </div>
+
+        <table id="petitionTable"></table>
+      </main>
+    </div>
+
+    <script src="viewreport.js"></script>
+  </body>
 </html>

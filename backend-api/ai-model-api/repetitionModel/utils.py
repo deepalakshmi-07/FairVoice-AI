@@ -24,6 +24,16 @@ def predict_repetition(new_title: str, existing_titles: List[str], threshold: fl
       is_repetitive: bool
       duplicate_indices: List[int]  # positions in existing_titles
     """
+    # ─────────────────────────────────────────────────────────────
+    # GUARD: if no existing titles, skip tokenization & return false
+    if not existing_titles:
+        return {
+            "is_repetitive": False,
+            "duplicate_indices": []
+        }
+    # ─────────────────────────────────────────────────────────────
+
+    
     # Batch‐tokenize
     inputs_new = tokenizer([new_title] * len(existing_titles),
                            truncation=True, padding=True, max_length=128, return_tensors="pt")

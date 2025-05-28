@@ -116,35 +116,40 @@ router.post("/submit", authMiddleware, uploadFiles, async (req, res) => {
 
     let isRepetitive = false;
     let duplicateWith = [];
-    try {
-      const { data } = await axios.post(
-        "http://localhost:8000/predict-repetition",
-        {
-          text: petitionTitle,
-          existing: existingTitles,
-        }
-      );
-      isRepetitive = data.is_repetitive;
-
-      if (isRepetitive) {
-        // Map indices → titles
-        const matchedTitles = data.duplicate_indices.map(
-          (i) => existingTitles[i]
-        );
-        // Fetch all matching documents by title within the same filter
-        const duplicates = await Petition.find(
+    // GUARD: only call repetition API if we have something to compare
+    if (existingTitles.length > 0) {
+      try {
+        const { data } = await axios.post(
+          "http://localhost:8000/predict-repetition",
           {
-            category: category,
-            subDistrict: subDistrict,
-            petitionTitle: { $in: matchedTitles },
-            createdAt: { $gte: sinceDate },
-          },
-          "_id"
-        ).lean();
-        duplicateWith = duplicates.map((d) => d._id);
+            text: petitionTitle,
+            existing: existingTitles,
+          }
+        );
+        isRepetitive = data.is_repetitive;
+
+        if (isRepetitive) {
+          // Map indices → titles
+          const matchedTitles = data.duplicate_indices.map(
+            (i) => existingTitles[i]
+          );
+          // Fetch all matching documents by title within the same filter
+          const duplicates = await Petition.find(
+            {
+              category: category,
+              subDistrict: subDistrict,
+              petitionTitle: { $in: matchedTitles },
+              createdAt: { $gte: sinceDate },
+            },
+            "_id"
+          ).lean();
+          duplicateWith = duplicates.map((d) => d._id);
+        }
+      } catch (err) {
+        console.error("Error calling repetition model:", err.message);
       }
-    } catch (err) {
-      console.error("Error calling repetition model:", err.message);
+    } else {
+      console.log("▶️ No candidates for repetition check—skipping.");
     }
 
     // 7. Create & Save Petition
