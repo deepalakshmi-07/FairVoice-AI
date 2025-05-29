@@ -22,3 +22,15 @@ exports.addOfficial = async (req, res) => {
     res.status(400).json({ message: msg });
   }
 };
+
+// GET /api/admin/list-officials
+exports.listOfficials = async (req, res) => {
+  try {
+    const officers = await Official.find()
+      .select("-password") // omit the hashed password
+      .sort({ department: 1, role: 1, region: 1, name: 1 });
+    res.json(officers);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching officials" });
+  }
+};

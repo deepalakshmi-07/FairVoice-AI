@@ -173,3 +173,38 @@ body {
   background-color: #ff5a5a;
   color: white;
 }
+
+/* manage-official.css */
+
+/* Green Edit button */
+.btn-edit {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-edit:hover {
+  background-color: #218838;
+}
+
+/* Red Remove button */
+.btn-remove {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+/* .btn-remove:hover {
+  background-color: #c82333;
+}
+
+.btn-edit,
+.btn-remove {
+  font-family: "Poppins", sans-serif;
+} */

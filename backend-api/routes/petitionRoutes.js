@@ -260,4 +260,18 @@ router.get("/forOfficial", authMiddleware, async (req, res) => {
   }
 });
 
+// GET /api/petitions/:id
+router.get("/:id", authMiddleware, async (req, res) => {
+  try {
+    const petition = await Petition.findById(req.params.id).lean();
+    if (!petition) {
+      return res.status(404).json({ message: "Petition not found." });
+    }
+    res.json(petition);
+  } catch (err) {
+    console.error("Error fetching petition by ID:", err);
+    res.status(500).json({ message: "Server error." });
+  }
+});
+
 module.exports = router;
