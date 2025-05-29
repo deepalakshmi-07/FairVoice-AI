@@ -14,7 +14,9 @@
         <div class="logo">FairVoice</div>
       </div>
       <!-- <div class="department-title"><strong>Education Department</strong></div> -->
-      <button class="logout-btn" onclick="logout()">Logout</button>
+      <button id="logoutBtn" class="logout-btn" onclick="logout()">
+        Logout
+      </button>
     </header>
 
     <div class="container">
@@ -71,7 +73,7 @@
           <p id="welcome-line3"></p>
         </div>
 
-        <p>Here are the active petitions submitted by citizens:</p>
+        <p id="overview-title">Petition-Overview across the Department</p>
 
         <!-- Petition Overview Section -->
         <div id="petition-overview" class="petition-overview">
@@ -81,21 +83,22 @@
               <span class="count" id="total-count">0</span>
             </p>
           </div>
-          <div class="overview-box">
-            <p>
-              <strong>Resolved:</strong>
-              <span class="count" id="resolved-count">0</span>
-            </p>
-          </div>
+
           <div class="overview-box">
             <p>
               <strong>Pending:</strong>
               <span class="count" id="pending-count">0</span>
             </p>
           </div>
+          <div class="overview-box">
+            <p>
+              <strong>Resolved:</strong>
+              <span class="count" id="resolved-count">0</span>
+            </p>
+          </div>
         </div>
 
-        <!-- Petition List -->
+        <!-- Petition List 
         <div class="petition-container">
           <a
             class="petition-box"
@@ -150,11 +153,16 @@
               <span class="status pending">Completed</span>
             </div>
           </a>
-        </div>
+        </div> -->
+
+        <!-- Petition List (dynamically populated) -->
+        <p>Here are the active petitions submitted by citizens:</p>
+        <div class="petition-container" id="petition-container"></div>
       </main>
     </div>
 
     <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="official-dashboard.js"></script>
   </body>
 </html>

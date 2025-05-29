@@ -34,32 +34,32 @@ function logout() {
 }
 
 // Petition Overview Count Logic
-function updatePetitionOverview() {
-  const petitions = document.querySelectorAll(".petition-box");
-  let total = petitions.length;
-  let resolved = 0;
-  let pending = 0;
-  let completed = 0;
+// function updatePetitionOverview() {
+//   const petitions = document.querySelectorAll(".petition-box");
+//   let total = petitions.length;
+//   let resolved = 0;
+//   let pending = 0;
+//   let completed = 0;
 
-  petitions.forEach((petition) => {
-    const status = petition
-      .querySelector(".status")
-      .textContent.trim()
-      .toLowerCase();
-    if (status === "approved") {
-      resolved++;
-    } else if (status === "pending") {
-      pending++;
-    } else if (status === "completed") {
-      completed++;
-    }
-  });
+//   petitions.forEach((petition) => {
+//     const status = petition
+//       .querySelector(".status")
+//       .textContent.trim()
+//       .toLowerCase();
+//     if (status === "approved") {
+//       resolved++;
+//     } else if (status === "pending") {
+//       pending++;
+//     } else if (status === "completed") {
+//       completed++;
+//     }
+//   });
 
-  document.getElementById("total-count").textContent = total;
-  document.getElementById("resolved-count").textContent = resolved;
-  document.getElementById("pending-count").textContent = pending;
-  document.getElementById("completed-count").textContent = completed;
-}
+//   document.getElementById("total-count").textContent = total;
+//   document.getElementById("resolved-count").textContent = resolved;
+//   document.getElementById("pending-count").textContent = pending;
+//   document.getElementById("completed-count").textContent = completed;
+// }
 
 // Petition Details Click - Opens a new page or can open a modal with the petition info
 function openPetitionDetails(petition) {
@@ -124,6 +124,145 @@ function getWelcomeText(role, region, department) {
   }
 }
 
+// async function fetchAndRenderPetitions() {
+//   const token = localStorage.getItem("token");
+//   if (!token) {
+//     console.error("No token found—you must be logged in.");
+//     return;
+//   }
+
+//   try {
+//     // Use absolute URL in dev to avoid path issues:
+//     const res = await axios.get(
+//       "http://localhost:3000/api/petitions/forOfficial",
+//       {
+//         headers: { Authorization: `Bearer ${token}` },
+//       }
+//     );
+//     //console.log("Fetched petitions:", res.data);
+//     const petitions = res.data;
+//     console.log("Fetched petitions:", petitions);
+
+//     // ─── 2A) COMPUTE COUNTS ─────────────────────────────
+//     const totalCount = petitions.length;
+//     const resolvedCount = petitions.filter(
+//       (p) => p.status === "Resolved"
+//     ).length;
+//     const pendingCount = petitions.filter(
+//       (p) => p.status === "Submitted" || p.status === "In Progress"
+//     ).length;
+
+//     // ─── 2B) UPDATE THE OVERVIEW BOXES ─────────────────
+//     document.getElementById("total-count").textContent = totalCount;
+//     document.getElementById("pending-count").textContent = pendingCount;
+//     document.getElementById("resolved-count").textContent = resolvedCount;
+
+//     // ─── 2C) RENDER PETITION CARDS ───────────────────────
+//     const container = document.getElementById("petition-container");
+//     container.innerHTML = "";
+//     if (!totalCount) {
+//       container.innerHTML = "<p>No petitions found.</p>";
+//       return;
+//     }
+
+//     const container = document.getElementById("petition-container");
+//     container.innerHTML = "";
+
+//     if (!res.data.length) {
+//       container.innerHTML = "<p>No petitions found.</p>";
+//       return;
+//     }
+
+//     res.data.forEach((p) => {
+//       const date = new Date(p.createdAt).toLocaleDateString();
+//       // Build a link carrying the petition’s _id in the query string
+//       const href = `petition-details.html?id=${p._id}`;
+//       container.insertAdjacentHTML(
+//         "beforeend",
+//         `
+//         <a class="petition-box" href="${href}">
+//           <div class="petition-title">${p.petitionTitle}</div>
+//           <div class="petition-detail">Submitted on: ${date}</div>
+//           <div class="petition-detail">District: ${p.district}</div>
+//           <div class="petition-detail">
+//             Status: <span class="status ${p.status.toLowerCase()}">${
+//           p.status
+//         }</span>
+//           </div>
+//         </a>
+//       `
+//       );
+//     });
+//   } catch (err) {
+//     console.error("Error fetching petitions:", err);
+//     document.getElementById("petition-container").innerHTML =
+//       "<p>Failed to load petitions.</p>";
+//   }
+// }
+
+async function fetchAndRenderPetitions() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.error("No token found—you must be logged in.");
+    return;
+  }
+
+  try {
+    const res = await axios.get(
+      "http://localhost:3000/api/petitions/forOfficial",
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const petitions = res.data;
+    console.log("Fetched petitions:", petitions);
+
+    // ─── A) COMPUTE COUNTS ─────────────────────────────
+    const totalCount = petitions.length;
+    const resolvedCount = petitions.filter(
+      (p) => p.status === "Resolved"
+    ).length;
+    const pendingCount = petitions.filter(
+      (p) => p.status === "Submitted" || p.status === "In Progress"
+    ).length;
+
+    document.getElementById("total-count").textContent = totalCount;
+    document.getElementById("pending-count").textContent = pendingCount;
+    document.getElementById("resolved-count").textContent = resolvedCount;
+
+    // ─── B) RENDER PETITION CARDS ───────────────────────
+    const container = document.getElementById("petition-container");
+    container.innerHTML = ""; // clear old cards
+
+    if (totalCount === 0) {
+      container.innerHTML = "<p>No petitions found.</p>";
+      return;
+    }
+
+    petitions.forEach((p) => {
+      const date = new Date(p.createdAt).toLocaleDateString();
+      const href = `petition-details.html?id=${p._id}`;
+      container.insertAdjacentHTML(
+        "beforeend",
+        `
+        <a class="petition-box" href="${href}">
+          <div class="petition-title">${p.petitionTitle}</div>
+          <div class="petition-detail">Submitted on: ${date}</div>
+          <div class="petition-detail">District: ${p.district}</div>
+          <div class="petition-detail">
+            Status: <span class="status ${p.status.toLowerCase()}">${
+          p.status
+        }</span>
+          </div>
+        </a>
+      `
+      );
+    });
+  } catch (err) {
+    console.error("Error fetching petitions:", err);
+    document.getElementById("petition-container").innerHTML =
+      "<p>Failed to load petitions.</p>";
+  }
+}
+
 // Run setup after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   // 1) grab the token
@@ -143,29 +282,27 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("welcome-line2").innerText = line2;
   document.getElementById("welcome-line3").innerText = line3;
 
-  // ——— STATE-ONLY OVERVIEW ———
+  // ——— STATE-ONLY OVERVIEW ──────────────────────
   const overviewEl = document.getElementById("petition-overview");
+  const overviewHeading = document.getElementById("overview-title");
 
   if (role === "state") {
-    // state officers see it:
-    overviewEl.style.display = ""; // use default CSS (flex/block)
-    updatePetitionOverview(); // populate counts
+    // state officers see the overview
+    overviewEl.style.display = ""; // lets your CSS handle layout (e.g. flex)
+    overviewHeading.style.display = ""; // show title
   } else {
-    // everyone else: hide it
+    // district & subdistrict: hide
     overviewEl.style.display = "none";
+    overviewHeading.style.display = "none";
   }
-  // ————————————————
+  // —————————————————————————————————————
 
   // Attach logout handler
   document.getElementById("logoutBtn").addEventListener("click", logout);
 
+  // — finally, fetch & render all petitions
+  fetchAndRenderPetitions();
+
   // (If you have a sidebar toggle button, attach it here)
   // document.getElementById("sidebarToggleBtn").addEventListener("click", toggleSidebar);
-
-  // Attach the petition-details click handler to each petition-box
-  document.querySelectorAll(".petition-box").forEach((petitionBox) => {
-    petitionBox.addEventListener("click", () =>
-      openPetitionDetails(petitionBox)
-    );
-  });
 });

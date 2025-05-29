@@ -199,4 +199,65 @@ router.get("/mine", authMiddleware, async (req, res) => {
   }
 });
 
+// routes/petitionRoutes.js
+// … your existing requires/imports …
+
+// Mapping from JWT “department” → Petition.category in DB
+const DEPT_MAP = {
+  law: "Law and Order",
+  infra: "Infrastructure",
+  health: "Health",
+  education: "Education",
+  welfare: "Social Welfare",
+  admin: "Administration",
+};
+
+// Mapping from JWT “region” → Petition.district in DB
+const DISTRICT_MAP = {
+  chennai: "Chennai",
+  kanchipuram: "Kanchipuram",
+};
+
+// Mapping from JWT “region” → Petition.subDistrict in DB
+const SUBDISTRICT_MAP = {
+  northchennai: "Chennai North Division",
+  southchennai: "Chennai South Division",
+  centralchennai: "Chennai Central Division",
+  kanchipuram: "Kanchipuram Revenue Division",
+  sriperumbudur: "Sriperumbudur Revenue Division",
+};
+
+// GET /api/petitions/forOfficial
+router.get("/forOfficial", authMiddleware, async (req, res) => {
+  try {
+    const { role, region, department } = req.user;
+
+    // 1) Map the lowercase token values to your DB values
+    const categoryValue = DEPT_MAP[department] || department;
+    const districtValue = DISTRICT_MAP[region] || region;
+    const subDistrictValue = SUBDISTRICT_MAP[region] || region;
+
+    // 2) Base filter: department → petition.category
+    let filter = { category: categoryValue };
+
+    // 3) Narrow by region for district & subdistrict roles
+    if (role === "district") {
+      filter.district = districtValue;
+    } else if (role === "subdistrict") {
+      filter.subDistrict = subDistrictValue;
+    }
+    // state officers see everything in their department
+
+    // 4) Fetch & return
+    const petitions = await Petition.find(filter)
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return res.json(petitions);
+  } catch (err) {
+    console.error("Error in /forOfficial:", err);
+    return res.status(500).json({ message: "Could not load petitions." });
+  }
+});
+
 module.exports = router;
